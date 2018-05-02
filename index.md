@@ -5,7 +5,7 @@ title: About me
 permalink: index.html
 ---
 
-<img src="./images/swolfHeadVert.jpg" width="200" alt="Head Shot" align="right"/>
+<img src="./images/swolfHeadVert.jpg" width="200" alt="Head Shot" align="right" style="padding 5px;"/>
 
 
 This is the [Github](github.com) home of Steven Wolf, Assistant Professor of Physics at East Carolina University.
