@@ -10,8 +10,8 @@ permalink: index.html
 
 This is the [Github](github.com) home of Steven Wolf, Assistant Professor of Physics at East Carolina University.  I am a member of the [ECU STEM CoRE](https://stemcore.ecu.edu/) and currently co-PI on two NSF grants:
 
-- [XLABs](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1725655&HistoricalAwards=false)
-- [ADESSA](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1712211&HistoricalAwards=false)
+- [XLABs](https://stemcore.ecu.edu/2019/03/26/xlabs/)
+- [ADESSA](https://stemcore.ecu.edu/2019/03/25/adessa/)
 
 <img src="https://image.freepik.com/free-vector/geometric-background-with-text-of-coming-soon_1017-5069.jpg" width="250"/>
 
