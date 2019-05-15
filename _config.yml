@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Thoughts and projects from Dr. Steven Wolf, Assistant Professor of Physics at
   East Carolina University. Posted work is licensed under a Creative Commons
   BY-NC-SA 4.0 License unless noted otherwise.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://sfwphys.github.io" 
 github_username:  sfwolfphys
 
@@ -28,6 +28,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+exclude: ['*.Rmd']
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

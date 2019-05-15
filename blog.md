@@ -4,4 +4,4 @@ permalink: blog.html
 layout: home
 ---
 
-Here are some of my sporadic and half-baked thoughts about physics, education, or other topics.
+This will serve as a place for all of my self-published public writings for fun or otherwise.   
