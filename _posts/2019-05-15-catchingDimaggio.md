@@ -30,7 +30,8 @@ Before we begin, I'm going to point out some limitations for this:
 
 1. Yes, it makes the simulation easier.  But we are skipping walks, sacrifices, errors, etc.  That makes baseball cool, and leaving them out makes me sad.
 2. We are basically assuming that all of these players (even the roid rager) are ironmen on the order of [Cal Ripken Jr.](https://en.wikipedia.org/wiki/Cal_Ripken_Jr.).  So all 5 players would be on the list of [players with the longest consecutive games played streaks](https://en.wikipedia.org/wiki/Major_League_Baseball_consecutive_games_played_streaks).  This is especially dubious for the roid rager as PEDs tend to lead to injuries--Sammy Sosa says [sneezing is dangerous](http://www.espn.com/mlb/news/story?id=1804239).
-3. We are given each brother's batting average, but we aren't told whether it is the same for each season.  For the purposes of these calculations, I'm treating it simply as the probability for getting a hit.  It makes the code slightly incorrect, but easier.  Note that for a 20 year career, there are 3200 at bats, and that means that in order to record a 0.300 batting average, the player would need between 959 hits and 961 hits.
+3. The assumptions about all of the batting averages greater than 0.350 are dubious at best.  [Ty Cobb is the MLB leader in career batting average](https://en.wikipedia.org/wiki/List_of_Major_League_Baseball_career_batting_average_leaders), and he hit 0.366.  The next best hitter was Rogers Hornsby with a career average of 0.359.  Even the assumption that our enhanced hitter would have a 0.500 average is suspect.  [There have only been 28 players who have hit 0.400 or better in a *season*, and the last one was Ted Williams in 1941](https://en.wikipedia.org/wiki/List_of_Major_League_Baseball_players_with_a_.400_batting_average_in_a_season), and the best batting average ever was 0.440.  We haven't been anywhere ***near*** a 0.500 batting average.  Ever.  So the PEDs that riddler cousin is taking must be truly revolutionary. 
+4. We are given each brother's batting average, but we aren't told whether it is the same for each season.  For the purposes of these calculations, I'm treating it simply as the probability for getting a hit.  It makes the code slightly incorrect, but easier.  Note that for a 20 year career, there are 3200 at bats, and that means that in order to record a 0.300 batting average, the player would need between 959 hits and 961 hits.
 
 ### Functions to build the simulation
 There are three functions that I will use to accomplish the required tasks.  First I will generate the hits for a person's career.  The inputs to this are the career batting average and the number of seasons.  That being said, this is probably something that could be improved (as I'm just using the uniform distribution to generate whether a particular at-bat was a hit or not, rather than using the batting average to globally decide how many hits are and spreading them across all possible at bats).  This is the equivalent of flipping a coin 10 times -- when you do this, the most probable outcome is 5 heads and 5 tails.  However, if you do it, sometimes you'll get 4 heads, or 3 heads, or 9 heads...Now if you do that experiment lots of times, 5 heads will be the most frequent outcome.  So, we will see the "correct" outcome only 6.1% of the time (for the 0.300 player, it's slightly worse for the higher batting averages).
@@ -91,8 +92,8 @@ And now here are the results:
 |player1   |     0.20| 0.000|
 |player2   |     0.25| 0.000|
 |player3   |     0.30| 0.000|
-|player4   |     0.35| 0.008|
-|player5   |     0.40| 0.141|
+|player4   |     0.35| 0.007|
+|player5   |     0.40| 0.139|
 |pedPlayer |     0.50| 0.934|
 
 As expected, as batting average goes up, the probability to catch DiMaggio goes up.  But I suppose the lesson learned here is that cheaters can prosper (93%!?!?!) if they go long enough without getting caught.
