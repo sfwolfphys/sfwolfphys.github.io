@@ -6,6 +6,11 @@ permalink: presentations.html
 ---
 
 ## AAPT/PERC 2019
+Skip to project:
+- [X-Labs](#xlabs19)
+- [Learning Assistant Discourse](#LAconv19)
+- [Group Exams](#gpExams19)
+
 ### <a name="xlabs19">X-Labs</a>
 
 
