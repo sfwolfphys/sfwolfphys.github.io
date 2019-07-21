@@ -30,8 +30,8 @@ AAPT Talk DE04
 
 > This study reports the development and validation of an instrument to assess science practices in an introductory physics laboratory. The instrument, called Inves-tigation Design, Explanation, and Argument about Core Ideas Assessment (IDEA), asks students to design and conduct an investigation, perform data analysis and write an argument. The physics IDEA instrument was validated with (1) advanced physics undergraduate students, (2) physics graduate students and faculty, and (3) undergraduate students in introductory physics laboratory courses. This study establishes construct validity in that the instrument measures targeted science prac-tices. Face validity was established by administering the practical in 20 laboratory sections in the course of one week. We discuss results from implementation over a 1 year period, and implications for our lab curricula. This is part of a NSF-funded study into how science practices transfer between the scientific disciplines. 
 
-- [PERC Paper pre-print](./presentations/aapt2019/xlabsPracDevPaper.pdf)
-- [Poster](./presentations/aapt2019/xlabsPracticalDevPaper.pdf)
+- [PERC Paper pre-print](./presentations/aapt2019/xlabsPracticalDevPaper.pdf)
+- [Poster](./presentations/aapt2019/xlabsPracticalDevPoster.pdf)
 
 #### <a name="xlabsTA">GTA Teaching practices</a>
 
@@ -39,9 +39,9 @@ AAPT Talk DE04
 
 > This study reports the fidelity of implementation by Graduate Teaching Assistants (GTAs) of the Argument-Driven Inquiry (ADI) instructional model in introducto-ry physics laboratories. An ADI specific observation protocol was used to document the facilitation techniques of two GTAs during three investigations of a semester long course. This observation protocol considers each aspect of the ADI instructional model and therefore reveals fidelity of implementation. GTAs in general physics 1 and general physics 2 were observed during the first semester of course wide implementation. The results from the implementation of the observation protocol for two semesters of introductory physics will be discussed as well as implications for GTA facilitation for our facility. 
 
-- [PERC Paper pre-print](./presentations/aapt2019/xlabsGTAPaper.pdf)
+- [PERC Paper pre-print](./presentations/aapt2019/xlabsGTApaper.pdf)
 - [Talk slides](./presentations/aapt2019/AAPT2019SmithJoyner.pptx)
-- [Poster](./presentations/aapt2019/xlabsGTAPaper.pdf)
+- [Poster](./presentations/aapt2019/xlabsGTAposter.pdf)
 
 
 
