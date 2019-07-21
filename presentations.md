@@ -47,7 +47,7 @@ AAPT Talk DE04
 
 ### <a name="gpExams19">Group Exams</a>
 
-***Describing Collaborative Exams Using Random Graphs*** _Aaron Bain, Timothy Sault, and Steven Wolf* AAPT - PST2B08
+***Describing Collaborative Exams Using Random Graphs*** _Aaron Bain, Timothy Sault, and Steven Wolf_ AAPT - PST2B08
 
 > Humans are social creatures who learn as a unit in their communities. The goal of this research is to model these interactions and better describe and understand the individual interactions within the community. Through a better understanding of how these interactions take place we can better understand the connection between the cognitive and social domains of learning. Interactions between students taking collaborative exams are quantified using the framework of Network Analysis. Network Analysis has many models that can be used to describe different types of networks. We compare student collaboration networks to these different random Network Analysis models.
 
