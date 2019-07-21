@@ -31,7 +31,7 @@ AAPT Talk DE04
 > This study reports the development and validation of an instrument to assess science practices in an introductory physics laboratory. The instrument, called Inves-tigation Design, Explanation, and Argument about Core Ideas Assessment (IDEA), asks students to design and conduct an investigation, perform data analysis and write an argument. The physics IDEA instrument was validated with (1) advanced physics undergraduate students, (2) physics graduate students and faculty, and (3) undergraduate students in introductory physics laboratory courses. This study establishes construct validity in that the instrument measures targeted science prac-tices. Face validity was established by administering the practical in 20 laboratory sections in the course of one week. We discuss results from implementation over a 1 year period, and implications for our lab curricula. This is part of a NSF-funded study into how science practices transfer between the scientific disciplines. 
 
 - [PERC Paper pre-print](./presentations/aapt2019/xlabsPracDevPaper.pdf)
-- [Poster](./presentations/aapt2019/xlabsPracDevPaper.pdf))
+- [Poster](./presentations/aapt2019/xlabsPracticalDevPaper.pdf)
 
 #### <a name="xlabsTA">GTA Teaching practices</a>
 
