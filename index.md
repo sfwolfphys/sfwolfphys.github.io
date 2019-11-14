@@ -5,7 +5,7 @@ title: About me
 permalink: index.html
 ---
 
-<img src="./images/swolfHeadVert.jpg" width="200" alt="Head Shot" align="right" style="padding 5px;"/>
+<img src="./images/swolfHeadVert.jpg" width="150" alt="Head Shot" align="right" style="padding 10px;"/>
 
 [PDF CV](./files/swolfCV.pdf)
 
@@ -14,5 +14,9 @@ This is the [Github](github.com) home of Steven Wolf, Assistant Professor of Phy
 - [ADESSA](https://stemcore.ecu.edu/2019/03/25/adessa/)
 
 More information about my research projects can be found on my [research page](research.html).
+
+[<img src="https://laprogram.ecu.edu/wp-content/pv-uploads/sites/2355/2019/10/LA-Program-By-the-Numbers-page-001-1-1024x576.jpg" width="200" alt="Head Shot" align="left" style="padding 5px;"/>](https://laprogram.ecu.edu/)
+
+I am also the program director for the [ECU LA Program](https://laprogram.ecu.edu/).  As a part of this program, I work with students who are interested in helping others learn, and we all work together to promote better learning outcomes especially in introductory courses.  I also work with faculty to get them to think about how they are engaging students in the classroom and encourage more active participation from students in their classroom.  We also assess program outcomes.  This program is funded by [Academic Affairs at ECU](https://www.ecu.edu/cs-acad/aa/) and the [UNC Student Success Innovation Lab](https://www.northcarolina.edu/research-initiatives/student-success-innovation-lab-ssil).
 
 I earned my B.S. in physics and mathematics from [Valparaiso University](https://www.valpo.edu/physics-astronomy/) in 2003.  I earned my M.S. in [physics from Dartmouth College](https://physics.dartmouth.edu/) in 2005 picking up some FORTRAN and studying a bit of space weather.  After about a year working at a community college at teaching at a rural high school, I decided to go back to school for my [Ph.D. at Michigan State University](https://www.pa.msu.edu/), which I completed in 2012.  My thesis involved the use of networks to describe the ways that students, and physics faculty, categorize introductory physics problems.  Working with an interdisciplinary team such as the STEM CoRE is not new to me.  While a postdoc at Michigan State, I worked at the [CREATE for STEM Institute](http://create4stem.msu.edu) with Mathematics Ed and Physics Ed researchers.
