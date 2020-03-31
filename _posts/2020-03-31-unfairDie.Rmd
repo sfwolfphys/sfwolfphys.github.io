@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "Making an unfair die"
+categories: [riddler, fun]
+tags: [riddler, dice, probability]
+---
+```{r echo=FALSE}
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2020-03-31-unfairDie")
+```
+
+## Turning a fair die into an unfair die
+
+Here is [this week's Riddler problem](https://fivethirtyeight.com/features/can-you-get-the-gloves-out-of-the-box/).  
+
+> You start with a fair 6-sided die and roll it six times, recording the results of each roll. You then write these numbers on the six faces of another, unlabeled fair die. For example, if your six rolls were 3, 5, 3, 6, 1 and 2, then your second die wouldn’t have a 4 on it; instead, it would have two 3s.
+> 
+> Next, you roll this second die six times. You take those six numbers and write them on the faces of yet another fair die, and you continue this process of generating a new die from the previous one.
+> 
+> Eventually, you’ll have a die with the same number on all six faces. What is the average number of rolls it will take to reach this state?
+> _Extra credit_: Instead of a standard 6-sided die, suppose you have an N-sided die, whose sides are numbered from 1 to N. What is the average number of rolls it would take until all N sides show the same number?
+
+### Functions to build the simulation
+There are three functions that I will use to accomplish the required tasks.  First, we need to build the new die from the old die
+
+```{r echo=TRUE}
+makeNewDie = function(sides){
+  newSides = sample(sides,replace=TRUE)
+  return(newSides)
+}
+```
+
+Play die game for a generic N sided die:
+```{r echo=TRUE}
+playDieGame = function(N){
+  roll = 1
+  dieSides = 1:N
+  uniqueDieSides = unique(dieSides)
+  while(length(uniqueDieSides)>1){
+    # Roll the dice
+    roll = roll + 1
+    dieSides = makeNewDie(dieSides)
+    uniqueDieSides = unique(dieSides)
+  }
+  return(roll)
+}
+```
+
+### Results for N=6
+Let's play the game 10000 times and find an average!
+```{r echo=TRUE}
+n = 10000
+# Simulate the die game n times
+gameResult = replicate(n, playDieGame(6))
+avgResult = mean(gameResult)
+```
+
+The average number of rolls to end the game for a 6-sided die is: `r round(avgResult,2)`.
+
+```{r echo=FALSE}
+# Make a plot
+plot(ecdf(gameResult),main='',ylab='Cumulative probability',
+     xlab='Number of rolls to finish game',col='blue')
+abline(v=avgResult,col='red',lty=3)
+```
+
+### Results for more N values
+Let's check out some trends for different numbers of die sides to explore the trend.  I will begin by doing a power law regression to see if the relationship is indeed linear.
+```{r echo=TRUE}
+nSims = 1000
+dieSides = c(5:10,30,50,70,100,300,1000)
+avgRes = NULL
+seRes = NULL
+for(nSides in dieSides){
+  # Simulate the die game nSims times
+  gameRes = replicate(nSims, playDieGame(nSides))
+  avgRes = c(avgRes, mean(gameRes))
+  seRes = c(seRes, sd(gameRes)/sqrt(nSims))
+}
+dieRoll.lm = lm(log10(avgRes) ~ log10(dieSides))
+summary(dieRoll.lm)
+```
+
+It looks like the relationship between the average number of rolls and the number of sides on the die is linear.  (Note that the slope of the previous regression is: `r round(dieRoll.lm$coefficients[2],4)`)  Performing a linear regression, we see that there is a small offset.
+
+```{r echo=TRUE}
+dieRollLin.lm = lm(avgRes ~ dieSides)
+summary(dieRollLin.lm)
+```
+
+```{r echo=FALSE}
+plot(dieSides,avgRes,type='p',col='blue',xlab='Number of sides on the die', 
+     ylab='Average number of rolls to end the game',log='xy',pch=19)
+lines(dieSides,predict(dieRollLin.lm),col='red',lty=2)
+```
