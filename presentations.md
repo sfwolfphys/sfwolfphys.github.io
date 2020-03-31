@@ -5,6 +5,29 @@ title: Presentations
 permalink: presentations.html
 ---
 
+## NCSAAPT Fall 2019
+
+***How Learning Assistants Behave During Prep Sessions***
+*Marshall Adkins, Austin McCauley, Eleanor Close, Steven Wolf*
+Session 2b, talk
+> In  interactive  learning  environments,  conversations  are  an  im-portant medium whereby ideas are shared, and understanding isconstructed.  In this study, we describe the behaviors and con-versation  patterns  of  LAs  engaged  in  small-group  discussionsduring weekly preparation sessions.  We coded LA behavior ac-cording to the following categories:  socializing, separate work,group discussion, group discussion with instructor, and socializ-ing with instructor.  We coded video in these categories for each15 second increment.  After this initial coding pass, we createdconversation  maps  which  identify  the  speaker  and  all  listenersin  each  of  those  15  second  segments,  using  nodes  and  edgesto identify the speaker(s), listener(s), and amount of conversa-tional time.  All analyses have been carried out in the statisticalprogramming language R, utilizing packages including ‘igraph’and ‘sna’ to allow for characterization of the conversation maps.
+
+[Link to slides](./presentations/ncsaaptF2019/AAPTPresentation.pptx)
+
+***Scientific   Practices   in   Introductory   Physics   Labs***
+*Steven Wolf, Mark W. Sprague, Joi P. Walker*
+Session 2b, talk
+> This talk discusses the results of course transformation effortsin place at ECU to privilege scientific practices in our introduc-tory physics lab courses.  Transformed curricula were piloted inspring  2018  in  Physics  1,  and  fall  2018  in  Physics  2.  We  willdiscuss our curricular framework, practical assessment, and implementation  challenges.  In  particular  we  will  discuss  how  wehave worked with faculty to forge a consensus around the transformed  learning  goals, as well as  the  administrative  changesthat are required to sustain the new curricula.
+
+[Link to slides](./presentations/ncsaaptF2019/xlabsAssess.pdf)
+
+***Modeling Student Collaboration Networks***
+*Aaron Bain, Steven F. Wolf*
+Poster
+> In  interactive  classrooms,  student  learning  is  predicated  onparticipation  in  the  classroom  community.    The  goal  of  thisresearch is to model these interactions and better describe andunderstand  the  individual  interactions  within  the  community.We  collected  data  describing  who  students  collaborated  withthroughout  a  group  exam.   Using  these  data,  we  built  socialnetworks  of  the  classroom  for  each  group  exam.We  thenconstructed  a  random  model  that  we  optimize  to  match  theclassroom  social  networks.  We  describe  how  the  properties  ofthe model relate to student behavior.
+
+[Link to poster](./presentations/ncsaaptF2019/2019F_ncsaaptPoster.pdf)
+
 ## AAPT/PERC 2019
 Skip to project:
 - [X-Labs](#xlabs19)
