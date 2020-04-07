@@ -21,7 +21,7 @@ Here is [this week's Riddler problem](https://fivethirtyeight.com/features/can-y
 > _Extra credit_: Instead of a standard 6-sided die, suppose you have an N-sided die, whose sides are numbered from 1 to N. What is the average number of rolls it would take until all N sides show the same number?
 
 ### Functions to build the simulation
-There are three functions that I will use to accomplish the required tasks.  First, we need to build the new die from the old die
+There are two functions that I will use to accomplish the required tasks.  First, we need to build the new die from the old die
 
 ```{r echo=TRUE}
 makeNewDie = function(sides){
@@ -30,10 +30,10 @@ makeNewDie = function(sides){
 }
 ```
 
-Play die game for a generic N sided die:
+Then we will play the die game for a generic N sided die:
 ```{r echo=TRUE}
 playDieGame = function(N){
-  roll = 1
+  roll = 0
   dieSides = 1:N
   uniqueDieSides = unique(dieSides)
   while(length(uniqueDieSides)>1){
@@ -47,15 +47,17 @@ playDieGame = function(N){
 ```
 
 ### Results for N=6
-Let's play the game 10000 times and find an average!
+Let's play the game 100000 times and find an average!
 ```{r echo=TRUE}
-n = 10000
+n = 100000
 # Simulate the die game n times
 gameResult = replicate(n, playDieGame(6))
 avgResult = mean(gameResult)
+errResult = sd(gameResult)/sqrt(n)
 ```
 
-The average number of rolls to end the game for a 6-sided die is: `r round(avgResult,2)`.
+The average number of rolls to end the game for a 6-sided die is: `r sprintf("%.3f",avgResult)` ± `r sprintf("%.3f",errResult)`.
+
 
 ```{r echo=FALSE}
 # Make a plot
@@ -67,8 +69,8 @@ abline(v=avgResult,col='red',lty=3)
 ### Results for more N values
 Let's check out some trends for different numbers of die sides to explore the trend.  I will begin by doing a power law regression to see if the relationship is indeed linear.
 ```{r echo=TRUE}
-nSims = 1000
-dieSides = c(5:10,30,50,70,100,300,1000)
+nSims = 10000
+dieSides = c(2:10,30,50,70,100,1000)
 avgRes = NULL
 seRes = NULL
 for(nSides in dieSides){
@@ -90,6 +92,7 @@ summary(dieRollLin.lm)
 
 ```{r echo=FALSE}
 plot(dieSides,avgRes,type='p',col='blue',xlab='Number of sides on the die', 
-     ylab='Average number of rolls to end the game',log='xy',pch=19)
+     ylab='Average number of rolls to end the game',log='xy',pch=19,
+     ylim=c(0.75*min(avgRes),1.1*max(avgRes)))
 lines(dieSides,predict(dieRollLin.lm),col='red',lty=2)
 ```
