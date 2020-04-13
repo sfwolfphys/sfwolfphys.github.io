@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Catching Joe DiMaggio"
+categories: [riddler, fun]
+tags: [riddler]
+---
+```{r echo=FALSE}
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2019-05-15-catchingDimaggio")
+```
+
+## The riddle
+
+## Functions and background
+
+## Results
+
+## Extensions
+
