@@ -15,7 +15,7 @@ This is the [Github](github.com) home of Steven Wolf, Assistant Professor of Phy
 
 More information about my research projects can be found on my [research page](research.html).
 
-[<img src="https://laprogram.ecu.edu/wp-content/pv-uploads/sites/2355/2019/10/LA-Program-By-the-Numbers-page-001-1-1024x576.jpg" width="200" alt="Head Shot" align="left" style="padding 5px;" hspace="20"/>](https://laprogram.ecu.edu/)
+[<img src="./figure/LA-Program-By-the-Numbers_Spring-2020-1.jpg" width="200" alt="LA Program Stats" align="left" style="padding 5px;" hspace="20"/>](https://laprogram.ecu.edu/)
 
 I am also the program director for the [ECU LA Program](https://laprogram.ecu.edu/).  As a part of this program, I work with students who are interested in helping others learn, and we all work together to promote better learning outcomes especially in introductory courses.  I also work with faculty to get them to think about how they are engaging students in the classroom and encourage more active participation from students in their classroom.  We also assess program outcomes.  This program is funded by [Academic Affairs at ECU](https://www.ecu.edu/cs-acad/aa/) and the [UNC Student Success Innovation Lab](https://www.northcarolina.edu/research-initiatives/student-success-innovation-lab-ssil).
 
