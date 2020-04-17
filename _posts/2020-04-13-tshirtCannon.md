@@ -39,35 +39,38 @@ projectileRange = function(theta){
   thetaRad = theta * pi/180
   pRange = 100*sin(2*thetaRad)
   pRange = floor(pRange) + 1
+  pRange = ifelse(pRange>100,100,pRange)
   return(pRange)
 }
 {% endhighlight %}
 
 ## Results
-In order to find the expectation value, we can use the definition of the expectation value:
+Let's see where things land.  
 
-$$
-\langle f\rangle \equiv \int f(x)p(x) dx
-$$
-
-Let's apply that here.  For this uniform probability distribution, we can write:
-
-$$
-p(\theta) = \begin{cases}
-\frac{2}{\pi} \quad \text{for } 0\leq\theta\leq\frac{\pi}{2} \\
-0 \quad \text{else}
-\end{cases}
-$$
-
-So we can write:
-
-$$
-\langle R\rangle = \frac{200}{\pi} \int_0^{\frac{\pi}{2}} \sin 2\theta d\theta = \frac{200}{\pi} \left[-\frac{\cos 2\theta}{2}\right]_0^{\frac{\pi}{2}} = \frac{200}{\pi} \approx 63.662
-$$
-
-
-{% highlight text %}
-## [1] "So I would sit in row 64."
+{% highlight r %}
+launchAngle = seq(from=0,to=90,by=0.01)
+projectileRows = projectileRange(launchAngle)
+maxRow = names(which(table(projectileRows)==max(table(projectileRows))))
+row = data.frame('row'=projectileRows)
+#hist(projectileRows,breaks=c(0,101),freq=TRUE)
+ggplot(row, aes(x=row)) + geom_histogram(fill='blue', binwidth = 1)
 {% endhighlight %}
 
+![plot of chunk unnamed-chunk-3](/figure/2020-04-13-tshirtCannonunnamed-chunk-3-1.png)
+
+So the best row to sit in is row 100.  
+
+
+{% highlight r %}
+plot(launchAngle, projectileRows, col='blue', type='l', 
+     xlab='Launch Angle (deg)', ylab = 'Row number')
+minAngle = min(launchAngle[projectileRows==100])
+maxAngle = max(launchAngle[projectileRows==100])
+abline(v=minAngle, col='red', lty=3)
+abline(v=maxAngle, col='red', lty=3)
+{% endhighlight %}
+
+![plot of chunk unnamed-chunk-4](/figure/2020-04-13-tshirtCannonunnamed-chunk-4-1.png)
+
+This may be counterintuitive.  Looking at the figure below, it is easy to see what is going on.  I've plotted the row the projectile lands in vs. the launch angle.  The projectile row lands in row 100 between 40.95 deg and 49.05 deg.  This is a range of 8.1 degrees.  No other row has even half of that range of angles.  It is the fact that the derivative of the range function is so small near an angle of 45 degrees, that makes the range change so little as the launch angle changes.
 
