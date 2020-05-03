@@ -68,7 +68,7 @@ So, let me ask you, rhetorical student, do you want me to decide how many of eac
 
 ## That curve sucks, let's use something more realistic
 
-I feel that the above is only part of the point.  Note that at many institutions, the GPA required to avoid academic warning/probation/suspension is 2.0 (or a C).  So we can argue that we should "want" to shift that curve to the right so that a smaller percentage of students are in danger of experiencing academic consequences. And many institutions evaluate courses based on their DFW rate (that is, the fraction of students who get a D, F, or withdraw from a course).  This particular curve would produce a DFW rate of `r round(pnorm(70,mean=75,sd=10)*100,1)`%, which would get one on the appropriate administrator's shit list.  A grade distribution looking like this:
+I feel that the above is only part of the point.  Note that at many institutions, the GPA required to avoid academic warning/probation/suspension is 2.0 (or a C).  So we can argue that we should "want" to shift that curve to the right so that a smaller percentage of students are in danger of experiencing academic consequences. And many institutions evaluate courses based on their DFW rate (that is, the fraction of students who get a D, F, or withdraw from a course).  This particular curve would produce a DFW rate of `r round(pnorm(70,mean=75,sd=10)*100,1)`%, which would get one on the appropriate administrator's shit list.  A grade distribution looking like this would be better recieved by many people.
 
 ```{r echo=FALSE, message=FALSE, fig.align='center'}
 library(viridis)
