@@ -1,0 +1,122 @@
+---
+layout: post
+title:  "Grade on a curve? No way!"
+categories: [teaching, grading, students]
+tags: [teaching]
+---
+```{r echo=FALSE}
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2020-05-02-gradeOnCurve")
+```
+
+## Grade request
+
+Every year I get an email that has this as a part of the text:
+
+> I was also wondering if there was going to be a curve to the overall curve to the class.
+
+This is probably evidence that we have students to focused on their grades, and not focused enough on their learning.  (I rarely get emails about how much they learned in my class or what they should learn...only what the test will focus on.)  
+
+My stock answer to students is "no" and that the probably don't want to be graded on a curve anyway.  They look at me quizzically, and wonder why.  This is my attempt to go into more detail on that.
+
+## What is a curve and why shouldn't students want that?
+
+When you talk about the way that we conceptualize curves, you have to fall back to the [Normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Basically it assumes that the grade distribution should look like this:
+
+```{r echo=FALSE, message=FALSE, fig.align='center'}
+library(viridis)
+
+fscores = 50:60
+fdist = dnorm(fscores,mean=75,sd=10)
+dscores = 60:70
+ddist = dnorm(dscores,mean=75,sd=10)
+cscores = 70:80
+cdist = dnorm(cscores,mean=75,sd=10)
+bscores = 80:90
+bdist = dnorm(bscores,mean=75,sd=10)
+ascores = 90:100
+adist = dnorm(ascores,mean=75,sd=10)
+
+
+pal = viridis(5)
+scoreDist = dnorm(0:100,mean=75,sd=10)
+par(cex=1.5)
+curve(dnorm(x,mean=75,sd=10),type='l',xlim=c(50,100),xlab='score (%)',ylab='Grade distribution',lwd=2,ylim=c(0,1.05*dnorm(75,mean=75,sd=10)))
+polygon(c(50,fscores,60),c(0,fdist,0),col=pal[5],border=NA)
+polygon(c(60,dscores,70),c(0,ddist,0),col=pal[4],border=NA)
+polygon(c(70,cscores,80),c(0,cdist,0),col=pal[3],border=NA)
+polygon(c(80,bscores,90),c(0,bdist,0),col=pal[2],border=NA)
+polygon(c(90,ascores,100),c(0,adist,0),col=pal[1],border=NA)
+curve(dnorm(x,mean=75,sd=10),type='l',xlim=c(50,100),xlab='score (%)',ylab='Grade distribution',lwd=2,add=TRUE)
+legend('topright',legend=c(LETTERS[1:4],"F"),col=pal,pch=15)
+```
+
+Now we can argue about how I've centered that distribution.  But let's leave that for later.  What is more to the point is that grading on a curve means that we should want in a class of 100 to hand out grades as follows:
+
+```{r echo=FALSE, results='asis'}
+library(kableExtra)
+borders = pnorm(seq(90,60,by=-10), mean = 75, sd = 10)
+bottom = c(borders,0)
+top = c(1,borders)
+probs = (top-bottom)*100
+gDist.df = data.frame('grade'=c(LETTERS[1:4],"F"), 'number'=round(probs,0))
+kable(gDist.df,align='cr') %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+So, let me ask you, rhetorical student, do you want me to decide how many of each grade to hand out at the beginning of the semester?  Does that seem "fair" to you?  I know it doesn't sound fair to me.  And that's why I don't do it.
+
+## That curve sucks, let's use something more realistic
+
+I feel that the above is only part of the point.  Note that at many institutions, the GPA required to avoid academic warning/probation/suspension is 2.0 (or a C).  So we can argue that we should "want" to shift that curve to the right so that a smaller percentage of students are in danger of experiencing academic consequences. And many institutions evaluate courses based on their DFW rate (that is, the fraction of students who get a D, F, or withdraw from a course).  This particular curve would produce a DFW rate of `r round(pnorm(70,mean=75,sd=10)*100,1)`%, which would get one on the appropriate administrator's shit list.  A grade distribution looking like this:
+
+```{r echo=FALSE, message=FALSE, fig.align='center'}
+library(viridis)
+
+fscores = 50:60
+fdist = dnorm(fscores,mean=83,sd=10)
+dscores = 60:70
+ddist = dnorm(dscores,mean=83,sd=10)
+cscores = 70:80
+cdist = dnorm(cscores,mean=83,sd=10)
+bscores = 80:90
+bdist = dnorm(bscores,mean=83,sd=10)
+ascores = 90:100
+adist = dnorm(ascores,mean=83,sd=10)
+
+
+pal = viridis(5)
+scoreDist = dnorm(0:100,mean=83,sd=10)
+par(cex=1.5)
+curve(dnorm(x,mean=83,sd=10),type='l',xlim=c(50,100),xlab='score (%)',ylab='Grade distribution',lwd=2,ylim=c(0,1.05*dnorm(83,mean=83,sd=10)))
+polygon(c(50,fscores,60),c(0,fdist,0),col=pal[5],border=NA)
+polygon(c(60,dscores,70),c(0,ddist,0),col=pal[4],border=NA)
+polygon(c(70,cscores,80),c(0,cdist,0),col=pal[3],border=NA)
+polygon(c(80,bscores,90),c(0,bdist,0),col=pal[2],border=NA)
+polygon(c(90,ascores,100),c(0,adist,0),col=pal[1],border=NA)
+curve(dnorm(x,mean=83,sd=10),type='l',xlim=c(50,100),xlab='score (%)',ylab='Grade distribution',lwd=2,add=TRUE)
+legend('topleft',legend=c(LETTERS[1:4],"F"),col=pal,pch=15)
+```
+
+Note: The distribution is actually "missing" scores greater than 100%.  I'm not going to allow for that in my diagram, and I'm too lazy to change the function generating this graph.  (I'm simply using R's built in `dnorm` and `pnorm` functions.)  Therefore, the graph is undercounting the A grades.  The grade table (which does properly count the A grades) would look like this, making my students happy:
+
+```{r echo=FALSE, results='asis'}
+borders = pnorm(seq(90,60,by=-10), mean = 83, sd = 10)
+bottom = c(borders,0)
+top = c(1,borders)
+probs = (top-bottom)*100
+gDist2.df = data.frame('grade'=c(LETTERS[1:4],'F'), 'number'=round(probs,0))
+kable(gDist2.df,align='cr') %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+And the DFW rate would be `r round(pnorm(70,mean=83,sd=10)*100,1)`%, making my appropriate administrator happy.  So why not use this "curve" instead?
+
+## Philosophical impact of grading "on a curve"
+
+Ultimately, the reason that I don't grade on a curve is that, ultimiately, I find it to be dehumanizing.  When we grade on a curve, we essentially turn the evaluation and assessment of students into a sorting task.  Education becomes the task of assigning things to students, so that I can rank them, and apply grades according to the "curve."  Plus, when I apply a curve, it makes my classroom competitive--students are fighting for a scarce resource, a higher grade--rather I want my classroom to be collaborative.  
+
+Furthermore, there is an underlying assumption behind the curves that I drew--and the idea that grades should fall along a curve.  All of these graphics and tables were made possible through an understanding of the Normal Curve.  The normal curve is a tool that statisticians have for describing and characterizing _random systems_.  That's those [`dnorm` and `pnorm` functions](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Normal.html) I was talking about earlier.  Why should we assume that grades should be randomly distributed?  Isn't the goal of education to actually educate?  
+
+Finally, the idea of applying a curve ignores the x-axis of these plots and, by extension, the content of our courses and the skills we want our students to develop.  Assuming that our homework and assessments are measuring meaningful things, why would we ignore that information.  In the end, it is important that we have standards for our students, our colleagues, and the students future employers.  The *what* is important, as well as the *how well*.  This is what attracts me to the idea of [standards-based](https://arundquist.wordpress.com/2013/07/23/sbg-thoughts-after-aapt/) [grading](https://www.per-central.org/items/detail.cfm?ID=11815).  In that setting, the teacher sets out standards, and students have to show that they can meet those standards.  Then, teachers grade student work based on those standards.  
+
