@@ -35,4 +35,4 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 # To bundle Filter gem dependencies
 gem 'rouge'
 
-gem "activesupport"
+gem "activesupport", ">= 6.0.3.1"
