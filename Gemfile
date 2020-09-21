@@ -36,3 +36,7 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 gem 'rouge'
 
 gem "activesupport", ">= 6.0.3.1"
+
+# Upgrade kramdown
+gem "kramdown", ">= 2.3.0"
+
