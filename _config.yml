@@ -34,3 +34,5 @@ plugins:
 
 exclude: ['*.Rmd']
 
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
