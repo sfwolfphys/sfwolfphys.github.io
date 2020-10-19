@@ -68,7 +68,16 @@ arrows(x0=simTests, y0=rProbs-sqrt(1/simTests), x1=simTests, y1=rProbs+sqrt(1/si
 
 In this plot, the blue line indicates a runoff probability of 50%.  Error bars are $$\sqrt{\frac{1}{N}}$$ where $$N$$ is the number of simulations run (and is likely an underestimate of the actual error).  
 
-The runoff probability for 10<sup>6</sup> is 50.0235%, which rounds to 50% rather nicely.  I'm certain that there is an analytic solution to this.  I'm not going to hunt for it though.
+The runoff probability for 10<sup>6</sup> is 50.0235%, which rounds to 50% rather nicely.  I'm certain that there is an analytic solution to this.  ~~I'm not going to hunt for it though.~~
+
+> EDIT: 10/19/2020:  The preceding answer assumes that the number of voters is _very large_.  The answer should depend on the number of voters.  Consider these examples:
+> - 1 voter means there is never a runoff (regardless of the number of candidates).
+> - 2 voters require a runoff every time they disagree (and nobody wins when they disagree...ever), so the runoff probability is $$\frac{N-1}{N}$$, where $$N$$ is the number of candidates.
+>
+> I fiddled around with some numbers (i.e., I will state it without proof), and I think that the runoff probability (for 3 candidates and $$N$$ voters) is this:
+> $$ \frac{N+2}{2(N+1)} $$
+> In the limit of large $$N$$, this agrees with my result.
+
 
 ## Extensions
 > _Extra credit_: Suppose there are N candidates instead of three. What is the probability of a runoff?
