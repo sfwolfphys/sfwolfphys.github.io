@@ -15,8 +15,8 @@ permalink: f2020ncsaapt.html
 ## XLABs Team:
 Our team has been busy transforming labs in Biology and Chemistry, as well as physics. These curricula are appropriate for any college-level intro course commonly taught.  [Check out our page](http://blog.ecu.edu/sites/xlabs/) if you want to learn more about our work including:
 
-- How we are assessing scientific practices across scientific disciplines--and use these assessments to fulfill General Education assessment requirements.
-- How we train our GTAs to implement ADI
-- Who is involved in the project
-- What DBER (Discipline-Based Education Research) is this curriculum founded on
+- How we are assessing scientific practices across scientific disciplines.
+- How we train our GTAs to implement ADI.
+- Who is involved in the project.
+- What DBER (Discipline-Based Education Research) this curriculum utilizes as a framework.
 
