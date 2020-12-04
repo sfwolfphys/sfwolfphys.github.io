@@ -6,7 +6,7 @@ tags: [riddler]
 ---
 ```{r echo=FALSE}
 knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2020-10-16-electionRunoff")
+knitr::opts_chunk$set(fig.path = "figure/2020-10-16-electionRunoff/")
 ```
 
 ## The riddle

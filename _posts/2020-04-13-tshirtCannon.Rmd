@@ -6,7 +6,7 @@ tags: [riddler, projectiles, probability]
 ---
 ```{r echo=FALSE}
 knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2020-04-13-tshirtCannon")
+knitr::opts_chunk$set(fig.path = "figure/2020-04-13-tshirtCannon/")
 library(ggplot2)
 ```
 

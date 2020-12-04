@@ -20,7 +20,7 @@ My stock answer to students is "no" and that the probably don't want to be grade
 
 When you talk about the way that we conceptualize curves, you have to fall back to the [Normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Basically it assumes that the grade distribution should look like this:
 
-<img src="/figure/2020-05-02-gradeOnCurveunnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+<img src="/figure/2020-05-02-gradeOnCurve/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
 
 Now we can argue about how I've centered that distribution.  But let's leave that for later.  What is more to the point is that grading on a curve means that we should want in a class of 100 to hand out grades as follows:
 
@@ -61,7 +61,7 @@ So, let me ask you, rhetorical student, do you want me to decide how many of eac
 
 I feel that the above is only part of the point.  Note that at many institutions, the GPA required to avoid academic warning/probation/suspension is 2.0 (or a C).  So we can argue that we should "want" to shift that curve to the right so that a smaller percentage of students are in danger of experiencing academic consequences. And many institutions evaluate courses based on their DFW rate (that is, the fraction of students who get a D, F, or withdraw from a course).  This particular curve would produce a DFW rate of 30.9%, which would get one on the appropriate administrator's shit list.  A grade distribution looking like this would be better recieved by many people.
 
-<img src="/figure/2020-05-02-gradeOnCurveunnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+<img src="/figure/2020-05-02-gradeOnCurve/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
 
 Note: The distribution is actually "missing" scores greater than 100%.  I'm not going to allow for that in my diagram, and I'm too lazy to change the function generating this graph.  (I'm simply using R's built in `dnorm` and `pnorm` functions.)  Therefore, the graph is undercounting the A grades.  The grade table (which does properly count the A grades) would look like this, making my students happy:
 

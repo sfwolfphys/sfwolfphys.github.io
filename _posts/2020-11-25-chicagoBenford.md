@@ -115,14 +115,14 @@ drawLastTwoDigitPlot = function(dat,candidate,barColor){
 drawBenfordPlot(dat=voteTally$BidenVotes,candidate = "Biden", barColor = 'blue')
 {% endhighlight %}
 
-![plot of chunk Biden-first](/figure/2020-11-25-chicagoBenfordBiden-first-1.png)
+![plot of chunk Biden-first](/figure/2020-11-25-chicagoBenford/Biden-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$BidenVotes,candidate="Biden",barColor="blue")
 {% endhighlight %}
 
-![plot of chunk Biden-last](/figure/2020-11-25-chicagoBenfordBiden-last-1.png)
+![plot of chunk Biden-last](/figure/2020-11-25-chicagoBenford/Biden-last-1.png)
 
 ## Trump plots
 
@@ -130,14 +130,14 @@ drawLastTwoDigitPlot(dat=voteTally$BidenVotes,candidate="Biden",barColor="blue")
 drawBenfordPlot(dat=voteTally$TrumpVotes,candidate = "Trump", barColor = 'red')
 {% endhighlight %}
 
-![plot of chunk Trump-first](/figure/2020-11-25-chicagoBenfordTrump-first-1.png)
+![plot of chunk Trump-first](/figure/2020-11-25-chicagoBenford/Trump-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$TrumpVotes,candidate="Trump",barColor="red")
 {% endhighlight %}
 
-![plot of chunk Trump-last](/figure/2020-11-25-chicagoBenfordTrump-last-1.png)
+![plot of chunk Trump-last](/figure/2020-11-25-chicagoBenford/Trump-last-1.png)
 
 ## "Third party" candidates
 Parker didn't include so-called third party candidates, but I didn't want to leave them out.  Granted the total votes for these candidates were quite small. Here is a histogram of all of the precinct vote distributions.  (No pretty colors because I'm lazy)
@@ -149,7 +149,7 @@ library(Hmisc)
 hist.data.frame(voteTotals)
 {% endhighlight %}
 
-![plot of chunk totalVotes](/figure/2020-11-25-chicagoBenfordtotalVotes-1.png)
+![plot of chunk totalVotes](/figure/2020-11-25-chicagoBenford/totalVotes-1.png)
 
 
 ### Hawkins plots
@@ -158,14 +158,14 @@ hist.data.frame(voteTotals)
 drawBenfordPlot(dat=voteTally$HawkinsVotes,candidate = "Hawkins", barColor = 'green')
 {% endhighlight %}
 
-![plot of chunk Hawkins-first](/figure/2020-11-25-chicagoBenfordHawkins-first-1.png)
+![plot of chunk Hawkins-first](/figure/2020-11-25-chicagoBenford/Hawkins-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$HawkinsVotes,candidate="Hawkins",barColor="green")
 {% endhighlight %}
 
-![plot of chunk Hawkins-last](/figure/2020-11-25-chicagoBenfordHawkins-last-1.png)
+![plot of chunk Hawkins-last](/figure/2020-11-25-chicagoBenford/Hawkins-last-1.png)
 
 ### La Riva plots
 
@@ -173,14 +173,14 @@ drawLastTwoDigitPlot(dat=voteTally$HawkinsVotes,candidate="Hawkins",barColor="gr
 drawBenfordPlot(dat=voteTally$LaRivaVotes,candidate = "La Riva", barColor = 'purple')
 {% endhighlight %}
 
-![plot of chunk LaRiva-first](/figure/2020-11-25-chicagoBenfordLaRiva-first-1.png)
+![plot of chunk LaRiva-first](/figure/2020-11-25-chicagoBenford/LaRiva-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$LaRivaVotes,candidate="La Riva",barColor="purple")
 {% endhighlight %}
 
-![plot of chunk LaRiva-last](/figure/2020-11-25-chicagoBenfordLaRiva-last-1.png)
+![plot of chunk LaRiva-last](/figure/2020-11-25-chicagoBenford/LaRiva-last-1.png)
 
 ### Carroll plots
 
@@ -188,14 +188,14 @@ drawLastTwoDigitPlot(dat=voteTally$LaRivaVotes,candidate="La Riva",barColor="pur
 drawBenfordPlot(dat=voteTally$CarrollVotes,candidate = "Carroll", barColor = 'lightgray')
 {% endhighlight %}
 
-![plot of chunk Carroll-first](/figure/2020-11-25-chicagoBenfordCarroll-first-1.png)
+![plot of chunk Carroll-first](/figure/2020-11-25-chicagoBenford/Carroll-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$CarrollVotes,candidate="Carroll",barColor="lightgray")
 {% endhighlight %}
 
-![plot of chunk Carroll-last](/figure/2020-11-25-chicagoBenfordCarroll-last-1.png)
+![plot of chunk Carroll-last](/figure/2020-11-25-chicagoBenford/Carroll-last-1.png)
 
 ### Jorgensen plots
 
@@ -204,11 +204,11 @@ drawBenfordPlot(dat=voteTally$JorgensenVotes,candidate = "Jorgensen", barColor =
                 curveColor='black')
 {% endhighlight %}
 
-![plot of chunk Jorgensen-first](/figure/2020-11-25-chicagoBenfordJorgensen-first-1.png)
+![plot of chunk Jorgensen-first](/figure/2020-11-25-chicagoBenford/Jorgensen-first-1.png)
 
 
 {% highlight r %}
 drawLastTwoDigitPlot(dat=voteTally$JorgensenVotes,candidate="Jorgensen",barColor="gold")
 {% endhighlight %}
 
-![plot of chunk Jorgensen-last](/figure/2020-11-25-chicagoBenfordJorgensen-last-1.png)
+![plot of chunk Jorgensen-last](/figure/2020-11-25-chicagoBenford/Jorgensen-last-1.png)

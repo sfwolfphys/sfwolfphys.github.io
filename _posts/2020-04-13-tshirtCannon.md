@@ -56,7 +56,7 @@ row = data.frame('row'=projectileRows)
 ggplot(row, aes(x=row)) + geom_histogram(fill='blue', binwidth = 1)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-3](/figure/2020-04-13-tshirtCannonunnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](/figure/2020-04-13-tshirtCannon/unnamed-chunk-3-1.png)
 
 So the best row to sit in is row 100.  
 
@@ -70,7 +70,7 @@ abline(v=minAngle, col='red', lty=3)
 abline(v=maxAngle, col='red', lty=3)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-4](/figure/2020-04-13-tshirtCannonunnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](/figure/2020-04-13-tshirtCannon/unnamed-chunk-4-1.png)
 
 This may be counterintuitive.  Looking at the figure below, it is easy to see what is going on.  I've plotted the row the projectile lands in vs. the launch angle.  The projectile row lands in row 100 between 40.95 deg and 49.05 deg.  This is a range of 8.1 degrees.  No other row has even half of that range of angles.  It is the fact that the derivative of the range function is so small near an angle of 45 degrees, that makes the range change so little as the launch angle changes.
 

@@ -84,13 +84,13 @@ plot.ecdf(searchLength, ylab = 'cumulative probability', main='',
           xlab = 'length of search')
 {% endhighlight %}
 
-![plot of chunk calculations](/figure/2020-09-21-guessingGame-calculations-1.png)
+![plot of chunk calculations](/figure/2020-09-21-guessingGame/calculations-1.png)
 
 {% highlight r %}
 hist(searchLength, freq=FALSE, xlab = 'length of search')
 {% endhighlight %}
 
-![plot of chunk calculations](/figure/2020-09-21-guessingGame-calculations-2.png)
+![plot of chunk calculations](/figure/2020-09-21-guessingGame/calculations-2.png)
 
 {% highlight r %}
 summary(searchLength)

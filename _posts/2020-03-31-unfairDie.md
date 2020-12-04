@@ -56,7 +56,7 @@ avgResult = mean(gameResult)
 errResult = sd(gameResult)/sqrt(n)
 {% endhighlight %}
 
-The average number of rolls to end the game for a 6-sided die is: 9.665 ± 0.018.
+The average number of rolls to end the game for a 6-sided die is: 9.655 ± 0.018.
 
 
 ![plot of chunk unnamed-chunk-5](/figure/2020-03-31-unfairDieunnamed-chunk-5-1.png)
@@ -88,21 +88,21 @@ summary(dieRoll.lm)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.143024 -0.002115  0.021287  0.035489  0.043296 
+## -0.139237 -0.004868  0.019866  0.036062  0.041398 
 ## 
 ## Coefficients:
 ##                 Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)      0.11317    0.02915   3.883  0.00218 ** 
-## log10(dieSides)  1.08889    0.02111  51.579 1.85e-15 ***
+## (Intercept)      0.11280    0.02870    3.93    0.002 ** 
+## log10(dieSides)  1.08869    0.02079   52.37 1.54e-15 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.05605 on 12 degrees of freedom
-## Multiple R-squared:  0.9955,	Adjusted R-squared:  0.9951 
-## F-statistic:  2660 on 1 and 12 DF,  p-value: 1.853e-15
+## Residual standard error: 0.0552 on 12 degrees of freedom
+## Multiple R-squared:  0.9956,	Adjusted R-squared:  0.9953 
+## F-statistic:  2743 on 1 and 12 DF,  p-value: 1.545e-15
 {% endhighlight %}
 
-It looks like the relationship between the average number of rolls and the number of sides on the die is linear.  (Note that the slope of the previous regression is: 1.0889)  Performing a linear regression, we see that there is a small offset.
+It looks like the relationship between the average number of rolls and the number of sides on the die is linear.  (Note that the slope of the previous regression is: 1.0887)  Performing a linear regression, we see that there is a small offset.
 
 
 {% highlight r %}
@@ -118,19 +118,19 @@ summary(dieRollLin.lm)
 ## lm(formula = avgRes ~ dieSides)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.10938 -0.09199  0.11542  0.27813  0.51316 
+##     Min      1Q  Median      3Q     Max 
+## -3.5616  0.0241  0.4336  0.6335  0.9188 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -2.5360899  0.1271109  -19.95 1.43e-10 ***
-## dieSides     2.0043637  0.0004712 4253.53  < 2e-16 ***
+##              Estimate Std. Error  t value Pr(>|t|)    
+## (Intercept) -2.944553   0.349041   -8.436 2.17e-06 ***
+## dieSides     2.013459   0.001294 1556.042  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.4464 on 12 degrees of freedom
+## Residual standard error: 1.226 on 12 degrees of freedom
 ## Multiple R-squared:      1,	Adjusted R-squared:      1 
-## F-statistic: 1.809e+07 on 1 and 12 DF,  p-value: < 2.2e-16
+## F-statistic: 2.421e+06 on 1 and 12 DF,  p-value: < 2.2e-16
 {% endhighlight %}
 
 ![plot of chunk unnamed-chunk-8](/figure/2020-03-31-unfairDieunnamed-chunk-8-1.png)

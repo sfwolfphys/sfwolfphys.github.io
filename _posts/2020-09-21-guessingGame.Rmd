@@ -7,7 +7,7 @@ tags: [riddler]
 ```{r echo=FALSE}
 library(xtable)
 knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2020-09-21-guessingGame-")
+knitr::opts_chunk$set(fig.path = "figure/2020-09-21-guessingGame/")
 getmode <- function(v) {
    uniqv <- unique(v)
    uniqv[which.max(tabulate(match(v, uniqv)))]

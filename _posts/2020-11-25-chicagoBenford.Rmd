@@ -6,7 +6,7 @@ tags: [election2020]
 ---
 ```{r echo=FALSE}
 knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2020-11-25-chicagoBenford",
+knitr::opts_chunk$set(fig.path = "figure/2020-11-25-chicagoBenford/",
                       fig.width = 12,fig.height = 8, dev.args = list(pointsize = 24))
 ```
 

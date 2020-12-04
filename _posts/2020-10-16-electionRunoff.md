@@ -64,7 +64,7 @@ arrows(x0=simTests, y0=rProbs-sqrt(1/simTests), x1=simTests, y1=rProbs+sqrt(1/si
        code=3, angle=90, length=0.1)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-4](/figure/2020-10-16-electionRunoffunnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-4](/figure/2020-10-16-electionRunoff/unnamed-chunk-4-1.png)
 
 In this plot, the blue line indicates a runoff probability of 50%.  Error bars are $$\sqrt{\frac{1}{N}}$$ where $$N$$ is the number of simulations run (and is likely an underestimate of the actual error).  
 
@@ -98,7 +98,7 @@ arrows(x0=candidates, y0=rProbsN-sqrt(1/100000), x1=candidates, y1=rProbsN+sqrt(
        code=3, angle=90, length=0.1)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](/figure/2020-10-16-electionRunoffunnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](/figure/2020-10-16-electionRunoff/unnamed-chunk-5-1.png)
 
 These are the values for the probabilities.  The estimated error probability is on the order of $$10^{-3}$$.
 

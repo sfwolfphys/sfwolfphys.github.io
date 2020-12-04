@@ -83,9 +83,11 @@ longestStreak = function(games){
 
 For each player, I'll simulate 10,000 careers (with 20 or 10 seasons each depending on the player).  Then I'll determine the longest hitting streak in each career.  Finally, I'll calculate the cumulative probability for a career to have a maximum hitting streak based on the simulated data.  Here is a plot of the cumulative probability distribution for each player:
 
-![plot of chunk catchingJoe](/figure/2019-05-15-catchingDimaggiocatchingJoe-1.png)
+![plot of chunk catchingJoe](/figure/2019-05-15-catchingDimaggio/catchingJoe-1.png)
 
 And now here are the results:
+
+Table: The probability each player catches DiMaggio
 
 |players   | averages|  prob|
 |:---------|--------:|-----:|
@@ -94,13 +96,13 @@ And now here are the results:
 |player3   |     0.30| 0.000|
 |player4   |     0.35| 0.007|
 |player5   |     0.40| 0.139|
-|pedPlayer |     0.50| 0.934|
+|pedPlayer |     0.50| 0.935|
 
-As expected, as batting average goes up, the probability to catch DiMaggio goes up.  But I suppose the lesson learned here is that cheaters can prosper (93%!?!?!) if they go long enough without getting caught.
+As expected, as batting average goes up, the probability to catch DiMaggio goes up.  But I suppose the lesson learned here is that cheaters can prosper (94%!?!?!) if they go long enough without getting caught.
 
 ### Extension
 Ok, so the record-breaking performance-enhancing cheater is not quite a satisfying answer to think about.  I want to know how many seasons the cousin has to play in order to have a 15% chance of breaking DiMaggio's streak.  Why 15%?  Well, that's (rounded off) the percent chance that the 0.400 hitter had of breaking DiMaggio's streak over the span of a 20 year career.  This would actually be useful in determining an appropriate interval for getting everyone in the league randomly tested for PEDs if one goal is to keep the record book meaningful.
 
-![plot of chunk cheaterProb](/figure/2019-05-15-catchingDimaggiocheaterProb-1.png)
+![plot of chunk cheaterProb](/figure/2019-05-15-catchingDimaggio/cheaterProb-1.png)
 
 So it looks like 1 season is long enough for our enhanced friend have (about) the same probability to break DiMaggio's record as our best-hitting rule-follower.
