@@ -53,6 +53,21 @@ The probability that nobody gets their own name is: 0.3667 or $$\frac{11}{30}$$.
 ## Extensions
 So it would be nice to know how this probability changes as the number of players in the secret santa game changes.  Let's find out!
 
+### EDIT (12/11/2020):
+Looking at the solution in [next week's riddler](https://fivethirtyeight.com/features/how-high-can-you-count-with-menorah-math/), I see that the probability of nobody getting themselves on a draw is:
+
+$$
+P_N = \sum_{k=0}^N \frac{\left(-1\right)^k}{k!}
+$$
+
+in the limit as $$N\rightarrow\infty$$, we see that this simplifies to:
+
+$$
+\lim_{N\rightarrow\infty} P_N = \frac{1}{e}
+$$
+
+I will make this the value of the horizontal line on the plot below.
+
 
 {% highlight r %}
 secretSantaMatch = function(N){
@@ -70,7 +85,7 @@ secretSantaMatch = function(N){
 n = c(1:10)
 ssm = sapply(n,FUN=secretSantaMatch)
 plot(n,ssm,xlab='number of people',ylab='probability for no matches',pch=20,col='blue')
-abline(h=ssm[length(ssm)],lty=2,col='lightblue')
+abline(h=exp(-1),lty=2,col='lightblue')
 {% endhighlight %}
 
 ![plot of chunk secretSantaMatch](/figure/2020-12-04-secretSanta/secretSantaMatch-1.png)
