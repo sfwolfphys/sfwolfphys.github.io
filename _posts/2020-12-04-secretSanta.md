@@ -90,7 +90,7 @@ abline(h=exp(-1),lty=2,col='lightblue')
 
 ![plot of chunk secretSantaMatch](/figure/2020-12-04-secretSanta/secretSantaMatch-1.png)
 
-Given what we are observing here, it would seem that the need to re-draw occurs a little more than 1/3 of the time regardless of the size of the group.  However, the number of permutations grows quickly $$(N!)$$, and I won't be taxing my machine further.  There is a steady (slow) growth in the curve, so I won't rule anything out.
+~~Given what we are observing here, it would seem that the need to re-draw occurs a little more than 1/3 of the time regardless of the size of the group.  However, the number of permutations grows quickly $$(N!)$$, and I won't be taxing my machine further.  There is a steady (slow) growth in the curve, so I won't rule anything out.~~
 
 ### Extension #2:  When does the game fail?
 If we know the game will fail, which draw is the most likely culprit (we will stick to the $$N=5$$ case for this)?  First, let's get only the permutations that fail.
