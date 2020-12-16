@@ -92,7 +92,9 @@ drawBenfordPlot = function(dat,candidate,barColor,curveColor='gold'){
     ymax = max(c(ymaxBen,1.1*max(table(dat))))
     ttl = paste(candidate,'Vote First Digit')
     hist(dat, xlab="First Digit", main=ttl, col=barColor,breaks=0:9,
-         ylim=c(0,ymax))
+                   ylim=c(0,ymax), axes=F)
+    axis(side=1, at=seq(0.5,8.5,by=1), labels=1:9)
+    axis(2)
     # What does Benford's law say should be the answer.  Overlay as a curve
     x = 1:9 
     benford = length(dat) * log10(1+1/x)

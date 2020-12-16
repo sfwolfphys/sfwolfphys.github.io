@@ -12,16 +12,10 @@ library(readxl)
 wholeworksheet  <- read_excel('chicagoResults.xlsx')
 
 # find the blank rows
-blankrows  <- data_frame(
-    blanks = which(is.na(wholeworksheet[1]))
-) %>% 
-    mutate(
-        dif = blanks - lag(blanks)
-        , rownum = row_number()
-        
-        # maybe someone can suggest a better way to handle using dplyr::lag() 
-        , startrow = ifelse(rownum == 1, 1, NA)
-        , startrow = coalesce(ifelse(dif == 1, lag(startrow, default =1), lag(blanks + 1)), 1)
+blankrows  <- tibble(blanks = which(is.na(wholeworksheet[1]))) %>% 
+    mutate(dif = blanks - lag(blanks), rownum = row_number(), 
+           startrow = ifelse(rownum == 1, 1, NA),
+           startrow = coalesce(ifelse(dif == 1, lag(startrow, default =1), lag(blanks + 1)), 1)
     )
 
 # get the end rows of each table
