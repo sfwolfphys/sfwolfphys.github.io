@@ -5,6 +5,8 @@ title: About me
 permalink: index.html
 ---
 
+If you are a student who wants to get involved with research in my lab, hit the [Get Started](getStartedPER.html) tab above.
+
 <img src="./images/swolfHeadVert.jpg" width="150" alt="Head Shot" align="right" style="padding 10px;" hspace="10"/>
 
 [PDF CV](./files/swolfCV.pdf)
