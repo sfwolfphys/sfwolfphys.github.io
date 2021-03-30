@@ -38,5 +38,5 @@ gem 'rouge'
 gem "activesupport", ">= 6.0.3.1"
 
 # Upgrade kramdown
-gem "kramdown", ">= 2.3.0"
+gem "kramdown", ">= 2.3.1"
 
