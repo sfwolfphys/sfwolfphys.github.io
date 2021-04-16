@@ -93,7 +93,7 @@ $$
 N = \sum_{d=1}^k { {n}\choose{k-d+1}} (k-d)!
 $$
 
-Here $$d$$ is an index that tells us how many digits are duplicated on each card.
+Here $$d$$ is an index that tells us how many digits are duplicated on a card.
 
 
 {% highlight r %}
