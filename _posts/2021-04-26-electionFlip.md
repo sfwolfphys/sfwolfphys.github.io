@@ -59,11 +59,11 @@ Note, that we can simply use the standard $$\mu = 0$$ and $$\sigma = 1$$ choices
 
 
 {% highlight r %}
-dm2 = 0.0001
-margins2 = seq(0,1000,dm2)
-probFlip2 = sum(dm2 * pnorm(margins2) * dnorm(-4*margins2))
+dm = 0.0001
+margins = seq(0,1000,dm)
+probFlip = sum(dm * pnorm(margins) * dnorm(-4*margins))
 {% endhighlight %}
 
-The probability that the result flips is 7.23%.  Not incredibly likely, but not so infrequent that it's occurrence should instigate an investigation culminating in a [39+ minute youtube video](https://www.youtube.com/watch?v=8Ko3TdPy0TU) into what is not likely.  Suffice it to say, this is nowhere near the 10 billion human second century threshhold Matt Parker discusses in that video (also below).
+The probability that the result flips is 7.23%.  (Here's more digits if you want them:  0.0722574.) Not incredibly likely, but not so infrequent that it's occurrence should instigate an investigation culminating in a [39+ minute youtube video](https://www.youtube.com/watch?v=8Ko3TdPy0TU) into what is not likely.  Suffice it to say, this is nowhere near the 10 billion human second century threshhold Matt Parker discusses in that video (also below).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8Ko3TdPy0TU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
