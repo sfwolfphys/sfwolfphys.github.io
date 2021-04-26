@@ -23,18 +23,18 @@ knitr::opts_chunk$set(fig.path = "figure/2021-04-26-electionFlip")
 ## Functions and background
 I'm not going to use many custom functions to solve this one.  Essentially, the fact that votes are _random and independant_ suggests that we should use the normal distribution.  So let's do that.  In R, the functions are in the `norm` family.  I will use two in particular:
 
-- `pnorm(x,mu,sigma)` is the probability to have a value $$x$$, drawn from the normal distribution with mean $$\mu$$ and standard deviation $$\sigma$$.  This is often referred to as a probability density.
+- `dnorm(x,mu,sigma)` is the probability to have a value $$x$$, drawn from the normal distribution with mean $$\mu$$ and standard deviation $$\sigma$$.  This is often referred to as a probability density.
 
 
 $$
-p(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{1}{2}\frac{\left(x-\mu\right)^2}{\sigma^2}\right)
+d(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{1}{2}\frac{\left(x-\mu\right)^2}{\sigma^2}\right)
 $$
 
 
-- `dnorm(x,mu,sigma)` is the probability that a value drawn from a distribution with the same mean and standard deviation as before is less than or equal to $$x$$.
+- `pnorm(x,mu,sigma)` is the probability that a value drawn from a distribution with the same mean and standard deviation as before is less than or equal to $$x$$.
 
 $$
-d(x) = \int_{-\infty}^{x} p(x') dx'
+p(x) = \int_{-\infty}^{x} d(x') dx'
 $$
 
 ## Results
@@ -59,7 +59,7 @@ $$
 So, to determine the probability to flip, I need to know the probability for a candidate to have a margin $$m_1>0$$ on election night and a margin $$m_2 < -4m_1$$ in the mail-in voting, integrated over all possible voting margins $m_1$.
 
 $$
-P_{\text{flip}} = \int_0^\infty p(m_1) d(-4m_1) dm_1
+P_{\text{flip}} = \int_0^\infty d(m_1) p(-4m_1) dm_1
 $$
 
 Note, that we can simply use the standard $$\mu = 0$$ and $$\sigma = 1$$ choices for the normal distribution as the actual percent margins can be normalized, and the scaling factor drops out of the margin inequality above.  Let's just integrate numerically.
@@ -67,9 +67,18 @@ Note, that we can simply use the standard $$\mu = 0$$ and $$\sigma = 1$$ choices
 ```{r}
 dm = 0.0001
 margins = seq(0,1000,dm)
-probFlip = sum(dm * pnorm(margins) * dnorm(-4*margins))
+probFlip = sum(dm * dnorm(margins) * pnorm(-4*margins))
 ```
 
 The probability that the result flips is `r round(probFlip*100,2)`%.  (Here's more digits if you want them:  `r probFlip`.) Not incredibly likely, but not so infrequent that it's occurrence should instigate an investigation culminating in a [39+ minute youtube video](https://www.youtube.com/watch?v=8Ko3TdPy0TU) into what is not likely.  Suffice it to say, this is nowhere near the 10 billion human second century threshhold Matt Parker discusses in that video (also below).
+
+> Note:  In a previous version of this post, I inverted the meaning of the `dnorm` and `pnorm` functions.  I ran a quick check to convince myself that I was right, and got a result that I didn't expect.  Note the output of these calculations:
+
+```{r}
+dnorm(1000)
+pnorm(1000)
+```
+
+> The first line shows that the distribution falls off to zero at $$x=\mu + 1000 \sigma$$, and that the probability for $$x \leq \mu + 1000\sigma$$ is 1 (to the standard floating point precision available in R).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8Ko3TdPy0TU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
