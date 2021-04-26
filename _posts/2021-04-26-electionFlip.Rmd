@@ -25,10 +25,14 @@ I'm not going to use many custom functions to solve this one.  Essentially, the 
 
 - `pnorm(x,mu,sigma)` is the probability to have a value $$x$$, drawn from the normal distribution with mean $$\mu$$ and standard deviation $$\sigma$$.  This is often referred to as a probability density.
 
+
 $$
 p(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{1}{2}\frac{\left(x-\mu\right)^2}{\sigma^2}\right)
 $$
+
+
 - `dnorm(x,mu,sigma)` is the probability that a value drawn from a distribution with the same mean and standard deviation as before is less than or equal to $$x$$.
+
 $$
 d(x) = \int_{-\infty}^{x} p(x') dx'
 $$
