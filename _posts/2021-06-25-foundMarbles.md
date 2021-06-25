@@ -73,7 +73,7 @@ So, we have to have 21, 35, and 44 marbles of each color for this to work.  Of c
 
 ## Extensions
 
-I'm just curious, what's the maximum probability and when does it happen?  My intuition is that there should be some sort of symmetry like $$n_R = n_G = n_B$$, which doesn't quite work for $$N=100$$.
+I'm just curious, what's the maximum probability and when does it happen?  My intuition is that there should be some sort of symmetry like $$n_R = n_G = n_B$$, but not quite since 100/3 is not an integer.
 
 
 {% highlight r %}
@@ -90,13 +90,16 @@ output[output$prob==maxProb, ]
 ## 2907   34    33     33 0.2289796
 {% endhighlight %}
 
-I want to see a heatmap of what this probability looks like:
+So my intuition is right, the answer is to make the number of marbles as equal as possible.  
+
+I also want to see a heatmap of what this probability looks like.  It should be quite symmetrical.  (Indeed it should be able to be reflected about a line with slope = 1.)
 
 
 {% highlight r %}
 ggplot(output, aes(nRed, nBlue, fill=prob)) + geom_tile() +
     scale_fill_viridis(discrete=FALSE) +
-    theme(aspect.ratio=1) + coord_fixed()
+    theme(aspect.ratio=1, axis.title=element_text(size=20), axis.text = element_text(size=16)) + 
+    coord_fixed()
 {% endhighlight %}
 
 ![plot of chunk probabilityMap](/figure/2021-06-25-foundMarbles/probabilityMap-1.png)
@@ -116,15 +119,30 @@ probAllThree(210,350,440)
 ## [1] 0.1946235
 {% endhighlight %}
 
-Not quite...I didn't think so.  I can't easily change marble numbers into probabilities in this.  We just have too many -1's and -2's running around in the expression to say that it should just scale up.  If the denominator was directly proportional to $$N^3$$ in the above expression, I would expect this to scale since I could then define $$ p = \frac{n}{N} $$ and have things cancel out of the expression.  This will be approximately true as $$N$$ gets very large.  But, for example, if I have one marble of each color in a bag of 3 marbles, then the probability I get one marble of each color be 1.  As the number of marbles grows (keeping the ratio even) will fall and then stabilize at some point, probably 6/27 = 2/9 = 0.222...
+Not quite...I didn't think so.  I can't easily change marble numbers into probabilities in the above expression.  We just have too many -1's and -2's running around in the expression to say that it should just scale up.  If the denominator was directly proportional to $$N^3$$ in the above expression, I would expect this to scale since I could then define $$ p = \frac{n}{N} $$ and have things cancel out of the expression.  As it stands, we can do that to some degree:
+
+$$
+6 \frac{n_R n_B n_G}{N(N-1)(N-2)} = 6 \frac{n_R n_B n_G}{N^3} \left(1-\frac{3}{N} + \frac{2}{N^2}\right)^{-1}
+    = 6 p_R p_B p_G \left(1-\frac{3}{N} + \frac{2}{N^2}\right)^{-1}
+$$
+
+The term in the parentheses will approach 1 as $$N$$ gets very large.  As the number of marbles grows this term can be ignored, and the probability will just be $$ 6 p_R p_B p_G $$.  If we further restrict ourselves to the case where the number of marbles from each color is equal, then we can set $$ p_R = p_B = p_G = \frac{1}{3} $$, and the probability becomes:
+
+$$
+\frac{2}{9} \left(1-\frac{3}{N} + \frac{2}{N^2}\right)^{-1}
+$$
+
+This is indeed 1 for $$N=3$$, and below is a plot of how it changes.  The red line on the plot below is at $$\frac{2}{9}$$ for reference.  (Note the log scale on the x-axis).
 
 
 {% highlight r %}
 n = 1:10000
 p = probAllThree(n,n,n)
-plot(n,p,xlab='Number of marbles of each color in the bag', log='x',
-     ylab='Probability to draw one marble of each color', ylim = c(0,1))
-abline(h=6/27,col='red', lty = 2)
+ggplot(data.frame(n,p), aes(n,p)) + geom_point(color='blue') + scale_x_continuous(trans='log10') +
+    geom_hline(yintercept=2/9, linetype='dashed', color='red') + 
+    theme(axis.title=element_text(size=20), axis.text = element_text(size=16)) + 
+    xlab('Number of marbles of each color in the bag') + ylim(0,1) +
+    ylab('Probability')
 {% endhighlight %}
 
 ![plot of chunk probabilityStability](/figure/2021-06-25-foundMarbles/probabilityStability-1.png)
