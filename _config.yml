@@ -26,6 +26,7 @@ github_username:  sfwolfphys
 
 
 # Build settings
+markdown: kramdown
 theme: minima
 
 plugins:

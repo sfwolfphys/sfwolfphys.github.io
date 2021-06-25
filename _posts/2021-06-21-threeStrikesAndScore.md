@@ -97,7 +97,9 @@ frameScores = matrix(scoreSubs(unlist(strsplit(adjStrings,''))),ncol=10,byrow = 
 gameScores = rowSums(frameScores)
 {% endhighlight %}
 
-The average game score is: 36.6666667.  There are three different scores that can be achieved:
+The average game score is: 36.6666667.  
+
+There are three different scores that can be achieved:
 
 - 60 (all three strikes in a row) occurs 8 times. (TDS pattern)
 - 40 (two strikes in a row, third strike not consecutive) occurs 56 times. (`DS - S` or `S - DS` pattern)

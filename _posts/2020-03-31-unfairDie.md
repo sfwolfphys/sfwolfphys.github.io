@@ -46,20 +46,20 @@ playDieGame = function(N){
 {% endhighlight %}
 
 ### Results for N=6
-Let's play the game 100000 times and find an average!
+Let's play the game 10000 times and find an average!
 
 {% highlight r %}
-n = 100000
+n = 10000
 # Simulate the die game n times
 gameResult = replicate(n, playDieGame(6))
 avgResult = mean(gameResult)
 errResult = sd(gameResult)/sqrt(n)
 {% endhighlight %}
 
-The average number of rolls to end the game for a 6-sided die is: 9.655 ± 0.018.
+The average number of rolls to end the game for a 6-sided die is: 9.611 ± 0.058.
 
 
-![plot of chunk unnamed-chunk-5](/figure/2020-03-31-unfairDieunnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](/figure/2020-03-31-unfairDie/unnamed-chunk-5-1.png)
 
 ### Results for more N values
 Let's check out some trends for different numbers of die sides to explore the trend.  I will begin by doing a power law regression to see if the relationship is indeed linear.
@@ -88,21 +88,21 @@ summary(dieRoll.lm)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -0.139237 -0.004868  0.019866  0.036062  0.041398 
+## -0.134117 -0.005829  0.021376  0.034802  0.041278 
 ## 
 ## Coefficients:
 ##                 Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)      0.11280    0.02870    3.93    0.002 ** 
-## log10(dieSides)  1.08869    0.02079   52.37 1.54e-15 ***
+## (Intercept)      0.11172    0.02832   3.945  0.00194 ** 
+## log10(dieSides)  1.08924    0.02051  53.107 1.31e-15 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.0552 on 12 degrees of freedom
-## Multiple R-squared:  0.9956,	Adjusted R-squared:  0.9953 
-## F-statistic:  2743 on 1 and 12 DF,  p-value: 1.545e-15
+## Residual standard error: 0.05446 on 12 degrees of freedom
+## Multiple R-squared:  0.9958,	Adjusted R-squared:  0.9954 
+## F-statistic:  2820 on 1 and 12 DF,  p-value: 1.307e-15
 {% endhighlight %}
 
-It looks like the relationship between the average number of rolls and the number of sides on the die is linear.  (Note that the slope of the previous regression is: 1.0887)  Performing a linear regression, we see that there is a small offset.
+It looks like the relationship between the average number of rolls and the number of sides on the die is linear.  (Note that the slope of the previous regression is: 1.0892)  Performing a linear regression, we see that there is a small offset.
 
 
 {% highlight r %}
@@ -118,19 +118,19 @@ summary(dieRollLin.lm)
 ## lm(formula = avgRes ~ dieSides)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.5616  0.0241  0.4336  0.6335  0.9188 
+##      Min       1Q   Median       3Q      Max 
+## -1.48426 -0.01724  0.15593  0.26103  0.60200 
 ## 
 ## Coefficients:
-##              Estimate Std. Error  t value Pr(>|t|)    
-## (Intercept) -2.944553   0.349041   -8.436 2.17e-06 ***
-## dieSides     2.013459   0.001294 1556.042  < 2e-16 ***
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.5892248  0.1560083   -16.6 1.22e-09 ***
+## dieSides     2.0039608  0.0005784  3465.0  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.226 on 12 degrees of freedom
+## Residual standard error: 0.5478 on 12 degrees of freedom
 ## Multiple R-squared:      1,	Adjusted R-squared:      1 
-## F-statistic: 2.421e+06 on 1 and 12 DF,  p-value: < 2.2e-16
+## F-statistic: 1.201e+07 on 1 and 12 DF,  p-value: < 2.2e-16
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8](/figure/2020-03-31-unfairDieunnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](/figure/2020-03-31-unfairDie/unnamed-chunk-8-1.png)

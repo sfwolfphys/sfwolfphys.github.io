@@ -47,9 +47,9 @@ playDieGame = function(N){
 ```
 
 ### Results for N=6
-Let's play the game 100000 times and find an average!
+Let's play the game 10000 times and find an average!
 ```{r echo=TRUE}
-n = 100000
+n = 10000
 # Simulate the die game n times
 gameResult = replicate(n, playDieGame(6))
 avgResult = mean(gameResult)
@@ -69,8 +69,8 @@ abline(v=avgResult,col='red',lty=3)
 ### Results for more N values
 Let's check out some trends for different numbers of die sides to explore the trend.  I will begin by doing a power law regression to see if the relationship is indeed linear.
 ```{r echo=TRUE}
-nSims = 10000
-dieSides = c(2:10,30,50,70,100,1000)
+nSims = 1000
+dieSides = c(2:10,30,50,70,100)
 avgRes = NULL
 seRes = NULL
 for(nSides in dieSides){

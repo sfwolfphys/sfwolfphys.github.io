@@ -33,4 +33,4 @@ files = cbind(rmds, xfun::with_ext(rmds, ".md"))
 
 for (i in seq_len(nrow(files))) build_one(files[i, ])
 
-system2("jekyll", "build")
+system2("bundle","exec","jekyll", "build")

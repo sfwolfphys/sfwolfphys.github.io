@@ -1,0 +1,98 @@
+---
+layout: post
+title:  "Counting my marbles before I lose them"
+categories: [riddler, fun]
+tags: [riddler]
+---
+
+```{r echo=FALSE,message=FALSE, warning=FALSE, include=FALSE}
+library(ggplot2)
+library(viridis)
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2021-06-25-foundMarbles/",fig.width=12)
+```
+
+## [The riddle](https://fivethirtyeight.com/features/can-you-count-your-marbles/)
+
+> From Matt Enlow comes an original puzzle of his that previously appeared in [Math Horizons](http://digitaleditions.sheridan.com/publication/?i=648526&view=contentsBrowser). (At first it may seem like there’s information missing, but I assure you that is not the case.).  A bag contains 100 marbles, and each marble is one of three different colors. If you were to draw three marbles at random, the probability that you would get one of each color is exactly 20 percent.
+>
+> How many marbles of each color are in the bag?
+
+## Functions and background
+
+I'm sure that there is an analytic solution to this.  But, BRUTE FORCE will work too.  We can be a little smart.  I'm going to assume that we have red, green, and blue marbles and denote their numbers to be $$ (n_R, n_G, n_B) $$ respectively, and I'm going to define $$N \equiv n_R + n_G + n_B = 100$$.  There are six ways that we can draw marbles of each color, so the probability to get one marble of each color for any bag with three colors of marbles is:
+
+$$
+6 \frac{n_R n_B n_G}{N(N-1)(N-2)} 
+$$
+
+Let's code this up in a function:
+
+```{r}
+probAllThree = function(k,l,m){
+    N = k + l + m
+    prob = 6 * k * l * m/(N*(N-1)*(N-2))
+    return(prob)
+}
+```
+
+## Results
+
+Let's just loop through all the possibilities:
+
+```{r}
+output = NULL
+for(nRed in 0:100){
+    nBlueMax = 100 - nRed
+    for(nBlue in 0:nBlueMax){
+        nGreen = 100 - nBlue - nRed
+        prob = probAllThree(nRed, nBlue, nGreen)
+        tst = data.frame(nRed, nBlue, nGreen, prob)
+        output = rbind(output, tst)
+    }
+}
+```
+
+Now let's look at the cases where the probability is equal to 20%
+
+```{r}
+output[output$prob==0.2, ]
+```
+
+So, we have to have 21, 35, and 44 marbles of each color for this to work.  Of course, the colors you choose are up to you.
+
+## Extensions
+
+I'm just curious, what's the maximum probability and when does it happen?  My intuition is that there should be some sort of symmetry like $$n_R = n_G = n_B$$, which doesn't quite work for $$N=100$$.
+
+```{r}
+maxProb = max(output$prob)
+output[output$prob==maxProb, ]
+```
+
+I want to see a heatmap of what this probability looks like:
+
+```{r probabilityMap}
+ggplot(output, aes(nRed, nBlue, fill=prob)) + geom_tile() +
+    scale_fill_viridis(discrete=FALSE) +
+    theme(aspect.ratio=1) + coord_fixed()
+```
+
+This makes sense.  The probability is low when we have very few reds (left edge of triangle), very few blues (bottom edge of triangle), or very few greens (hypotenuse of triangle).
+
+Just for fun, does the same ratio of marbles hold for larger values of $$N$$?  (For example if I have 210, 350, and 440 marbles, is there still a 20% chance we get one from each color?)
+
+```{r}
+probAllThree(210,350,440)
+```
+
+Not quite...I didn't think so.  I can't easily change marble numbers into probabilities in this.  We just have too many -1's and -2's running around in the expression to say that it should just scale up.  If the denominator was directly proportional to $$N^3$$ in the above expression, I would expect this to scale since I could then define $$ p = \frac{n}{N} $$ and have things cancel out of the expression.  This will be approximately true as $$N$$ gets very large.  But, for example, if I have one marble of each color in a bag of 3 marbles, then the probability I get one marble of each color be 1.  As the number of marbles grows (keeping the ratio even) will fall and then stabilize at some point, probably 6/27 = 2/9 = 0.222...
+
+```{r probabilityStability}
+n = 1:10000
+p = probAllThree(n,n,n)
+plot(n,p,xlab='Number of marbles of each color in the bag', log='x',
+     ylab='Probability to draw one marble of each color', ylim = c(0,1))
+abline(h=6/27,col='red', lty = 2)
+```
+
