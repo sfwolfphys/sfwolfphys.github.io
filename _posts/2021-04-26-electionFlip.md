@@ -6,6 +6,8 @@ tags: [riddler]
 ---
 
 
+Erratum:  See my [new post]({% post_url 2021-07-02-oopsie %}) where I fix a glaring error.
+
 ## The riddle
 [This week's riddle](https://fivethirtyeight.com/features/can-you-cut-the-perfect-pancake/):
 
@@ -53,7 +55,7 @@ $$
 m_2 < -4 m_1
 $$
 
-So, to determine the probability to flip, I need to know the probability for a candidate to have a margin $$m_1>0$$ on election night and a margin $$m_2 < -4m_1$$ in the mail-in voting, integrated over all possible voting margins $m_1$.
+So, to determine the probability to flip, I need to know the probability for a candidate to have a margin $$m_1>0$$ on election night and a margin $$m_2 < -4m_1$$ in the mail-in voting, integrated over all possible voting margins $$m_1$$.
 
 $$
 P_{\text{flip}} = \int_0^\infty d(m_1) p(-4m_1) dm_1
