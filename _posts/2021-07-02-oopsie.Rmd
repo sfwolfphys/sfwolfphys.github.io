@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Mea Culpa"
+title:  "Enigmerica Election -- Mea Culpa"
 categories: [riddler, fun]
 tags: [riddler, correction]
 ---
@@ -17,7 +17,9 @@ In one of my [previous posts]({% post_url 2021-04-26-electionFlip %}), I was inc
 
 ## Where the [old solution]({% post_url 2021-04-26-electionFlip %}) went right
 
-There was some text about random and independent trials, and the number of voters being very large.  The first bit allows us to assume that these are Bernoulli trials and follow the binomial distribution.  For example, if I give you a fair coin, what is the probability that you flip heads?  If you said 50%, give yourself a pat on the back.  Now, what if I tell you that before I handed you the coin, I flipped it 3 times and got 3 tails, does that change your answer?  If you said no, have a cookie too (after you are done patting yourself on the back). The coin has no memory, and past results don't influence future flips.  The fact that we have large numbers of voters means that the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) applies.  In short, we can assume the binomial probability distribution can be estimated using the normal distribution.  (That's our friends `dnorm` and `pnorm` again...if you don't remember, look back a the [old post]({% post_url 2021-04-26-electionFlip %}).)
+There was some text about random and independent trials, and the number of voters being very large.  The first bit allows us to assume that these are Bernoulli trials and follow the binomial distribution.  For example, if I give you a fair coin, what is the probability that you flip heads?  If you said 50%, give yourself a pat on the back.  Now, what if I tell you that before I handed you the coin, I flipped it 3 times and got 3 tails, does that change your answer?  If you said no, have a cookie too (after you are done patting yourself on the back). The coin has no memory, and past results don't influence future flips.  
+
+The fact that we have large numbers of voters means that the [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) applies.  In short, we can assume the binomial probability distribution can be estimated using the normal distribution.  (That's our friends `dnorm` and `pnorm` again...if you don't remember, look back a the [old post]({% post_url 2021-04-26-electionFlip %}).)
 
 ## Where the [old solution]({% post_url 2021-04-26-electionFlip %}) went wrong
 
@@ -47,7 +49,7 @@ abline(h=0.5,col='red',lty=2)
 Now, while you might think that this is fine since we are in a large $$N$$ regime, this is a close race, and marginal differences shouldn't be neglected.
 
 ## Let's fix things
-I want to reframe this a bit.  Let's start by looking at the probability distribution that a candidate will get $$x$$ votes in a given counting of $$n$$ votes:
+I want to reframe this a bit.  Let's start by looking at the probability distribution that a candidate will get $$x$$ votes in a given counting of $$n$$ votes.  For the binomial distribution, we know that the mean $$\mu = np$$ and the variance $$\sigma^2 = np(1-p)$$ are well-defined.  Now, we can use these to approximate a normal distribution (this is that Central Limit Theorem I mentioned earlier):
 
 $$
 d(x;n,p) = {n \choose x} p^x \left(1-p\right)^{n-x} \approx \frac{1}{\sqrt{2\pi np(1-p)}} \exp\left(-\frac{1}{2}\frac{\left(x-np\right)^2}{np(1-p)}\right)
