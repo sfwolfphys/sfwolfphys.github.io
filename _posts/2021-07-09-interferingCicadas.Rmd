@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "Interfering Cicada Populations"
+categories: [riddler, fun]
+tags: [riddler]
+---
+```{r echo=FALSE}
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2021-07-09-interferingCicadas/", 
+                      fig.width=16,fig.height=12)
+```
+
+## [The riddle](https://fivethirtyeight.com/features/can-you-solve-this-astronomical-enigma/)
+
+> Earlier this year, a new generation of [Brood X](https://www.scientificamerican.com/article/brood-x-cicadas-are-emerging-at-last1/) cicadas had emerged in many parts of the U.S. This particular brood emerges every 17 years, while some other cicada broods emerge every 13 years. Both 13 and 17 are prime numbers — and relatively prime with one another — which means these broods are rarely in phase with other predators or each other. In fact, cicadas following a 13-year cycle and cicadas following a 17-year cycle will only emerge in the same season once every 221 (i.e., 13 times 17) years!
+>
+> Now, suppose there are two broods of cicadas, with periods of A and B years, that have just emerged in the same season. However, these two broods can also interfere with each other one year after they emerge due to a resulting lack of available food. For example, if A is 5 and B is 7, then B’s emergence in year 14 (i.e., 2 times 7) means that when A emerges in year 15 (i.e., 3 times 5) there won’t be enough food to go around.
+> 
+> If both A and B are relatively prime and are both less than or equal to 20, what is the longest stretch these two broods can go without interfering with one another’s cycle? (Remember, both broods just emerged this year.) For example, if A is 5 and B is 7, then the interference would occur in year 15.
+
+## Functions and background
+
+First, we need to define what is meant by the term _relatively prime_.  Two numbers are relatively prime, if the greatest common factor between the two numbers is 1.  For example, 2 and 9 are relatively prime.  The factors of 2 are 1 and 2, and the factors of 9 are 1, 3, and 9.  The largest number common to both lists is 1.  Fortunately, R has a package that lets you calculate the greatest common factor:  It is the `gcd()` function in the `FRACTION` package.  I'm going to code a function called `isRelPrime()` which takes two inputs `a` and `b` and returns `TRUE/FALSE` if the inputs are relatively prime
+
+```{r}
+library(FRACTION)
+
+isRelPrime = function(a,b){
+    gcd(a,b) == 1
+}
+```
+
+Next, let's think about the interference condition.  We will observe interference if the $$B$$ brood emerges the year after the $$A$$ brood:
+
+$$
+nB = mA+1
+$$
+
+(where $$n$$ and $$m$$ are arbitrary integers) OR if the $$A$$ brood emerges the year after the $$B$$ brood:
+
+$$
+nA = mB + 1
+$$
+
+So let's think about this for the example they give, for $$A=5$$ and $$B=7$$.  
+
+
+So I'm going to write a function that finds the minimum interference time for two given brood cycle lengths:
+
+```{r}
+minInterferenceTime = function(a,b){
+    ## Case 1 nB = mA + 1
+    case1left = (1:a)*b
+    case1right = (1:b)*a + 1
+    case1 = case1left[which(case1left %in% case1right)]
+}
+```
+
+
+## Results
+
+Given the constraints of the problem, I think writing a few short loops is appropriate
+
+```{r}
+
+```
+
+
+## Extensions
+
