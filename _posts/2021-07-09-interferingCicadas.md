@@ -4,11 +4,7 @@ title:  "Interfering Cicada Populations"
 categories: [riddler, fun]
 tags: [riddler]
 ---
-```{r echo=FALSE}
-knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2021-07-09-interferingCicadas/", 
-                      fig.width=16,fig.height=12)
-```
+
 
 ## [The riddle](https://fivethirtyeight.com/features/can-you-solve-this-astronomical-enigma/)
 
@@ -22,13 +18,14 @@ knitr::opts_chunk$set(fig.path = "figure/2021-07-09-interferingCicadas/",
 
 First, we need to define what is meant by the term _relatively prime_.  Two numbers are relatively prime, if the greatest common factor between the two numbers is 1.  For example, 2 and 9 are relatively prime.  The factors of 2 are 1 and 2, and the factors of 9 are 1, 3, and 9.  The largest number common to both lists is 1.  Fortunately, R has a package that lets you calculate the greatest common factor:  It is the `gcd()` function in the `FRACTION` package.  I'm going to code a function called `isRelPrime()` which takes two inputs `a` and `b` and returns `TRUE/FALSE` if the inputs are relatively prime.
 
-```{r}
+
+{% highlight r %}
 library(FRACTION)
 
 isRelPrime = function(a,b){
     gcd(a,b) == 1
 }
-```
+{% endhighlight %}
 
 Next, let's think about the interference condition.  
 
@@ -50,7 +47,8 @@ $$
 
 We will put similar restrictions on $$n<B$$ and $$m<A$$.
 
-```{r}
+
+{% highlight r %}
 minInterferenceTime = function(a,b){
     if(!isRelPrime(a,b)){
         return(NULL)
@@ -66,7 +64,7 @@ minInterferenceTime = function(a,b){
     mIT = min(c(case1,case2))
     return(mIT)
 }
-```
+{% endhighlight %}
 
 Note, this whole $$A$$ and $$B$$ are relatively prime is relatively important...pardon the pun...For example, 2 and 4 are not relatively prime.  For example, if $$A=2$$ and $$B=4$$, then they will never interfere, because they will always emerge in even years, and not one year before or after an even year.
 
@@ -74,7 +72,8 @@ Note, this whole $$A$$ and $$B$$ are relatively prime is relatively important...
 
 Given the constraints of the problem, I think writing a few short loops is appropriate
 
-```{r}
+
+{% highlight r %}
 longestTime = 0
 for(a in 2:19){
     for(b in (a+1):20){
@@ -84,9 +83,9 @@ for(a in 2:19){
         }
     }
 }
-```
+{% endhighlight %}
 
-So, the longest time from this year (when both broods emerge) is going to be `r longestTime` years.  This occurs if $$A=17$$ and $$B=19$$ or vice versa.  
+So, the longest time from this year (when both broods emerge) is going to be 153 years.  This occurs if $$A=17$$ and $$B=19$$ or vice versa.  
 
 
 
