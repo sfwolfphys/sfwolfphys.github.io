@@ -4,12 +4,7 @@ title:  "Best strategy for a fencing relay"
 categories: [riddler, fun]
 tags: [riddler]
 ---
-```{r echo=FALSE}
-knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
-knitr::opts_chunk$set(fig.path = "figure/2021-12-13-relayStrategy/", 
-                      fig.width=16,fig.height=12)
-library(xtable)
-```
+
 
 ## [The riddle](https://fivethirtyeight.com/features/en-garde-can-you-win-the-fencing-relay/)
 
@@ -23,7 +18,8 @@ library(xtable)
 ## Functions and background
 We need a function that simulates a relay:
 
-```{r}
+
+{% highlight r %}
 simulateRelay = function(pOrder){
     if(length(pOrder)!=3){
         stop("The number of participants is 3.")
@@ -68,8 +64,7 @@ simulateRelay = function(pOrder){
                'allMatches'=matchResult)
     return(res)
 }
-
-```
+{% endhighlight %}
 
 ## Results
 
@@ -80,7 +75,8 @@ Before I present results, I'd like to state my idea of how this should work.  My
 
 If I play my best player in any spot but the last one, the most matches that can be won are 15, and my sense is that we want the player who can gain wins most efficiently out for the longest time.
 
-```{r}
+
+{% highlight r %}
 playerProbs = c(0.25,0.5,0.75)
 
 Nsims=1000
@@ -107,13 +103,20 @@ for(p1 in playerProbs){
 }
 ## Order the table
 relayResTab = relayResTab[order(-relayResTab$WinPct),]
-```
+{% endhighlight %}
 
 The labels in this table `p1`, `p2`, and `p3` are the win probabilities of the first, second, and third players respectively.
-```{r, echo=FALSE, results='asis'}
-res.xtab = xtable(relayResTab)
-print(res.xtab,include.rownames=FALSE,type='html')
-```
+<!-- html table generated in R 4.1.2 by xtable 1.8-4 package -->
+<!-- Mon Dec 13 16:31:53 2021 -->
+<table border=1>
+<tr> <th> p1 </th> <th> p2 </th> <th> p3 </th> <th> WinPct </th>  </tr>
+  <tr> <td align="right"> 0.50 </td> <td align="right"> 0.25 </td> <td align="right"> 0.75 </td> <td align="right"> 93.40 </td> </tr>
+  <tr> <td align="right"> 0.25 </td> <td align="right"> 0.50 </td> <td align="right"> 0.75 </td> <td align="right"> 93.10 </td> </tr>
+  <tr> <td align="right"> 0.25 </td> <td align="right"> 0.75 </td> <td align="right"> 0.50 </td> <td align="right"> 84.20 </td> </tr>
+  <tr> <td align="right"> 0.75 </td> <td align="right"> 0.25 </td> <td align="right"> 0.50 </td> <td align="right"> 17.10 </td> </tr>
+  <tr> <td align="right"> 0.50 </td> <td align="right"> 0.75 </td> <td align="right"> 0.25 </td> <td align="right"> 7.30 </td> </tr>
+  <tr> <td align="right"> 0.75 </td> <td align="right"> 0.50 </td> <td align="right"> 0.25 </td> <td align="right"> 6.40 </td> </tr>
+   </table>
 
 These results show that my intuition is correct, the strongest player going last is indeed optimal.  In fact, any order that had the highest rated player after the lowest rated player made the team's victory more than 80% probable.
 
