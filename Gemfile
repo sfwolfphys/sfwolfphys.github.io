@@ -40,3 +40,6 @@ gem "activesupport", ">= 6.0.3.1"
 # Upgrade kramdown
 gem "kramdown", ">= 2.3.1"
 
+## Update nokogiri
+gem "nokogiri", ">= 1.12.5"
+
