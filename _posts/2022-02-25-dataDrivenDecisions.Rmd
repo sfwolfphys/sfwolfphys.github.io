@@ -21,19 +21,40 @@ In our [February meeting](https://www.ecu.edu/cs-acad/fsonline/customcf/fsagenda
 
 This report is typical of what I could call "data analysis as counting."  We were given a report on university grades updated over the past year.  We saw a number of plots that looked like this one showing grade distributions for the entire university.
 
-```{r echo=FALSE}
+```{r gradeDist, echo=FALSE}
 gradeDistData = read.csv('ecuGradeData/ecuGradeData.csv')
 gradeDistData$grade = factor(gradeDistData$grade)
 
 ggplot(gradeDistData, aes(fill = grade, y = gradeNum, x = acadYear)) +
-    geom_bar(position=position_fill(reverse = TRUE), stat='identity') +
-    scale_y_continuous(labels = scales::percent) +
-    scale_fill_viridis(discrete = T) + ylab('Percentage of grades') +
-    xlab('Academic Year')
+  geom_bar(position=position_fill(reverse = TRUE), stat='identity') +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_viridis(discrete = T) + ylab('Percentage of grades') +
+  xlab('Academic Year') + 
+  theme(text = element_text(size=20), 
+        axis.text.x = element_text(angle=-45,hjust=0, vjust=0.5))
 ```
 
-This was then repeated for one of the colleges, one of the departments, and one of the courses.  And they all, mostly, looked the same, at least to my eye.  (The explosion of `P` grades in 2019-2020 and 2020-2021 is explained by the fact that we allowed students to be graded on a PASS/FAIL basis due to the COVID pandemic and the subsequent abrupt transitions to online instruction.)
+This was then repeated for one of the colleges, one of the departments, and one of the courses.  And they all, mostly, looked the same, at least to my eye, with the exception of the growth in the number of `P` grades during the 2019-20 and 2020-21 academic years. One policy that the Faculty Senate voted on was allowing students to choose to be graded on a PASS/FAIL basis, rather than be assigned a traditional letter grade during the pandemic period where we made abrupt mid-semester transitions from face to face to online learning environments.  This report was, in part, supposed to be a way for the Faculty Senate to evaluate the effectiveness of this policy. At this point, I would want to ask multiple questions, and I'll list a few here specifically about potential shifts in the distribution beginning in that academic year:
 
+- Are any of the changes in the grade distribution statistically significant?
+- How much of the grade distribution shifts can be attributed to the PASS/FAIL grading option?
+- Which students are taking advantage of the PASS/FAIL grading option? Is there a differential demographic impact of this policy?
+- What is the impact of the increased focus on online learning during that period?
 
+None of these questions were discussed by the presenter.  No deeper issues were explored by the presenter.  Indeed, the presenter showed us the grade distributions, made some passing remarks at how they were "trying to learn more" about the data, but at no point did the presenter suggest that these sorts of questions were being considered. Did I ask any of these questions to the presenter? No, because in my experience, the presenter -- indeed, _anyone_ presenting a report to the Faculty Senate -- has not asked these kinds of questions themselves.  Also, a complaint similar to mine was raised by another Faculty Senator which might (hopefully) spur discussion in these sorts of productive directions. Ultimately, this means that our policy decisions and the ways that we can participate in shared governance aren't guided by meaningful data analysis.  So are we engaged in data-driven decision making? I think not.
 
+## Aside: Grades and the academy
 
+Grades don't tell us much, if anything, about what students learn in a class.  Indeed most instructors construct their classes, assessments, and grading practices so that their grades follow a fixed distribution.  [I've railed on about why I don't curve grades previously,]({% post_url 2020-05-02-gradeOnCurve%}) so I won't expand upon that here.  Suffice it to say that the above plot and the stability of grade distributions underlines the point that I made in that post.  And if that isn't enough to convince you, ask an instructor what the class average will be for the test that they are about to give.  An experienced instructor will likely nail it to within 3%.
+
+So, if we are to evaluate how students are doing in our courses, we should not look at our grade distributions, which are typically static.  Any meaningful analysis will have to delve into the ways that shifts in instruction or evaluation impacts different groups at the university critical to our institutional mission.
+
+## A way forward
+
+So, rather than simply being a Grumpy Gus and point the finger elsewhere, I am going to see if I can come up with some ways of improving the situation.  To do this, I'll ask three questions:
+
+- ***What are we trying to learn?*** These presentations are always geared towards evaluating some aspect of the academic experience of faculty, students, or both.  In order to be most effective, this should be as targeted as possible, and aligned to the university mission.  In this case, I think it would have been valuable to explore how PASS/FAIL grading impacted our students.  Who took advantage of it?  One of our campus missions is outreach to rural students, so it would be good to know, for example, if rural students and urban students took advantage of PASS/FAIL grading at similar rates.
+- ***What is the model?*** In any sort of research project or data analysis, we need to think about the model of the system that we are trying to describe.  In this case there could be multiple components to this model, including both faculty and student characteristics.  Any analysis of student grades is going to be complicated by the fact that one of the most predictive metrics of future grades is past grades.  For example, if I have two students walk into my classroom on day 1, one with a 4.0 GPA, and the other with a 2.0 GPA, on average, the student with the 4.0 will probably get a better grade in my class.  That effect is amplified if those are grades in Physics 1, when my class is Physics 2.  So any analysis that we do to understand a question surrounding grades should include previous grades in some meaningful way.
+- ***What are the conclusions/recommendations?*** Ultimately, this should be the result of any data analysis. Even some preliminary conclusions could be helpful if data are new and policy must be crafted swiftly.
+
+Lastly, I'll point this out. Oftentimes, the people carrying out these analyses are administrators that do not have a technical background, or even a terminal degree in their field.  So one might think that I am asking a great deal of people without the expertise to make this sort of data analysis a reality.  But I do envision another solution to this problem--specifically, engage the appropriate faculty that we already have on campus in this data analysis work.  [Data Science is a degree program that exists on this campus](https://cet.ecu.edu/csci/graduate-programs/ms-in-data-science/), and faculty in many disciplines routinely engage in research which broadly fits under the "Data Science" umbrella (myself included).  Give us resources: heightened access to the raw data and the administrative team managing that data, course buyouts, funding for/access to graduate students/postdocs that they can mentor in this analysis. And then we can turn this into publications and grants that will both raise the profile of this institution, and allow the broader faculty community to engage in authentic data driven decision making as is our responsibility under a shared governance model.
