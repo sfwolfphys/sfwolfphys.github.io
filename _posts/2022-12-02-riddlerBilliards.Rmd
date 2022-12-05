@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Riddler Billiards"
+categories: [riddler, fun]
+tags: [riddler]
+---
+```{r echo=FALSE}
+knitr::opts_knit$set(base.dir = "/home/swolf/website/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "figure/2022-12-02-riddlerBilliards/", 
+                      fig.width=16,fig.height=12)
+```
+
+## The riddle
+
+> Maryam is playing billiards on a 1 meter by 1 meter square table. She places the ball in one of the corners, aiming to strike the ball so that it travels as far as possible before hitting a wall for the third time. Note that the ball doesn’t necessarily have to hit three different walls of the table.
+> 
+> Assume the ball travels in a straight path and that it bounces off a wall as you’d expect.2 Also assume that it’s impossible for Maryam to hit the ball precisely in one of the corners of the table. Instead, it will hit both sides that are adjacent to the corner.
+>
+> What is the farthest the ball can travel before hitting a wall for the third time?
+> 
+> Extra credit: What is the farthest the ball can travel before hitting a wall for the Nth time?
+
+## Functions and background
+
+## Results
+
+## Extensions
+
